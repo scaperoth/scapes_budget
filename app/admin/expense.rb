@@ -1,4 +1,5 @@
 ActiveAdmin.register Expense do
+  permit_params :frequency, :name, :amount, :notes
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

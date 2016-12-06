@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Expense -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Expense %></h1>
+</div>
 
-<p>
-  <strong>Frequency:</strong>
-  <%= @expense.frequency %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:frequency) %></dt>
+      <dd><pre class="prettyprint"><%= @expense.frequency %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @expense.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:amount) %></dt>
+      <dd><pre class="prettyprint"><%= @expense.amount %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:notes) %></dt>
+      <dd><pre class="prettyprint"><%= @expense.notes %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @expense.name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              expenses_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_expense_path(@expense), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              expense_path(@expense),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @expense.notes %>
-</p>
-
-<p>
-  <strong>Budget:</strong>
-  <%= @expense.budget %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @expense.user %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>

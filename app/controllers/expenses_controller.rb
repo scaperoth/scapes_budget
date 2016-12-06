@@ -29,6 +29,7 @@ class ExpensesController < ApplicationController
   # POST /expenses.json
   def create
     @expense = Expense.new(expense_params)
+    @expense.user = current_user
 
     respond_to do |format|
       if @expense.save

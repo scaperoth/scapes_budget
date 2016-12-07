@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ScapesBudget</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Prelang: Analytics / Google Analytics -->
-    <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
-<body>
-<%= render partial: "elements/navbar" %>
-<%= bootstrap_flash %>
+    <head>
+        <title>ScapesBudget</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- Prelang: Analytics / Google Analytics -->
+        <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
+    <body>
 
-
-<%= yield %>
-
-</body>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <%= render partial: "elements/navbar" %>
+            <%= render partial: "elements/sidebar" %>
+        </nav>
+        
+        <div id="page-wrapper" class="padding-top-20">
+        <%= bootstrap_flash %>
+        
+        <%= yield %>
+      </div>
+    </body>
 </html>

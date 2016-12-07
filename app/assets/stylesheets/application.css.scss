@@ -10,20 +10,15 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
+*= require bootstrap_import 
 *= require metisMenu.min
-*= require sb-admin.min
-*= require morris.min
-*= require font-awesome.min
-*= require_tree .
+*= require morris
+*= require css/font-awesome.min
 *= stub active_admin
+*= require sb-admin/sb-admin-2.min
 
 *= require_self
 */
-@import "bootstrap_configuration";
-
-@import "bootstrap-sprockets";
-
-@import "bootstrap";
 
 //->Prelang (ui_framework:twitter_bootstrap)
 
@@ -40,4 +35,8 @@
 //->Prelang (user_login:devise)
 .form-user {
   max-width: 450px;
+}
+
+.padding-top-20, #page-wrapper{
+  padding-top:20px;
 }

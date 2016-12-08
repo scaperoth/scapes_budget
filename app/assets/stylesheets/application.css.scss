@@ -11,11 +11,12 @@
 * file per style scope.
 *
 *= require bootstrap_import 
-*= require metisMenu.min
+*= require bootstrap-social 
+*= require metisMenu
 *= require morris
-*= require css/font-awesome.min
+*= require font-awesome
 *= stub active_admin
-*= require sb-admin/sb-admin-2.min
+*= require sb-admin-2.min
 
 *= require_self
 */

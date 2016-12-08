@@ -6,6 +6,8 @@ gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'jquery-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 3.2'  
 # Use Uglifier as compressor for JavaScript assets
@@ -42,6 +44,8 @@ gem 'bundler'
 gem 'delayed_job_active_record'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap-sass-extras'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
@@ -52,6 +56,9 @@ gem 'binding_of_caller'
 gem 'google-analytics-rails'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
+gem 'flot-rails', :git => "https://github.com/Kjarrigan/flot-rails.git"
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
 group :development, :test do
   gem 'dotenv-rails'

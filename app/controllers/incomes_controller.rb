@@ -4,6 +4,7 @@ class IncomesController < ApplicationController
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
   before_action :set_income, only: [:show, :edit, :update, :destroy]
+  before_action :set_budget, only: [:index, :show, :new, :create, :destroy]
 
   # GET /incomes
   # GET /incomes.json
@@ -30,6 +31,7 @@ class IncomesController < ApplicationController
   def create
     @income = Income.new(income_params)
     @income.user = current_user
+    @income.budget = @budget
 
     respond_to do |format|
       if @income.save
@@ -61,7 +63,7 @@ class IncomesController < ApplicationController
   def destroy
     @income.destroy
     respond_to do |format|
-      format.html { redirect_to incomes_url, notice: 'Income was successfully destroyed.' }
+      format.html { redirect_to budget_incomes_url(@budget), notice: 'Income was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +72,12 @@ class IncomesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_income
       @income = Income.find(params[:id])
+    end
+    
+    # set budget for specific expense
+    def set_budget
+        @budget = Budget.find(params[:budget_id]) unless params[:budget_id].nil?
+        @budget = Budget.find(@income.budget_id) unless @income.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -18,25 +18,25 @@
               <% end %>
             </li>
             <li>
-              <a href="#"><i class="fa fa-table fa-fw"></i> Budgets<span class="fa arrow"></span></a>
+              <a href="javascript:void(0)"><i class="fa fa-table fa-fw"></i> Budgets<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 <% Budget.all.each do |b| %>
                   <li>
-                      <a href="#"><%= b.name %> <span class="fa arrow"></span></a>
+                      <a href="javascript:void(0)"><%= b.name %> <span class="fa arrow"></span></a>
                       <ul class="nav nav-third-level">
                         <li>
-                          <%= link_to edit_budget_path(b) do %>
+                          <%= link_to edit_budget_path(b), class: active_class(edit_budget_path(b)) do %>
                             <i class="fa fa-edit fa-fw"></i> Edit Budget
                           <% end %>
                         </li>
                          
                         <li>
-                          <%= link_to budget_expenses_path(b) do %>
+                          <%= link_to budget_expenses_path(b), class: active_class(budget_expenses_path(b)) do %>
                             <i class="fa fa-cc fa-fw"></i> Expenses
                           <% end %>
                         </li>
                         <li>
-                          <%= link_to budget_incomes_path(b) do %>
+                          <%= link_to budget_incomes_path(b), class: active_class(budget_incomes_path(b)) do %>
                             <i class="fa fa-dollar fa-fw"></i> Income
                           <% end %>
                         </li>

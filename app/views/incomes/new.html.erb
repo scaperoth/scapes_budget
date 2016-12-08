@@ -2,5 +2,5 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Income %></h1>
 </div>
-<%= render :partial => 'form' %>
+<%= render :partial => 'form', locals: {path: budget_incomes_path, model: [@budget, @income]} %>
 

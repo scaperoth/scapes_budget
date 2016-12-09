@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :authenticate_user!, except: [:login, :signup, :signout]
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -16,7 +17,11 @@ class ApplicationController < ActionController::Base
 
 
   private
-  
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
+
   #-> Prelang (user_login:devise)
   def require_user_signed_in
     unless user_signed_in?
@@ -25,10 +30,10 @@ class ApplicationController < ActionController::Base
       # them to the root path.
       if request.env['HTTP_REFERER']
         fallback_redirect = :back
-      elsif defined?(root_path)
-        fallback_redirect = root_path
+      elsif defined?(new_user_session_path)
+        fallback_redirect = new_user_session_path
       else
-        fallback_redirect = "/"
+        fallback_redirect = "/login"
       end
 
       redirect_to fallback_redirect, flash: {error: "You must be signed in to view this page."}

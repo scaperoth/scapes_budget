@@ -1,44 +1,32 @@
-<div class="page-header">
-  <h1><%=t ".title", default: "Login" %></h1>
-</div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "uk-form uk-form-stacked form-user"}) do |f| %>
+<fieldset>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal form-user"}) do |f| %>
-                                                                                                                                        
-  
-  <div class="form-group">
-    <%= f.label :login, "Username or Email", class: "control-label col-md-4" %>
-    <div class="col-md-8">
-      <%= f.text_field :login, class: "text-field form-control", html: {spellcheck: "false"} %>
+    <div class="uk-form-row large-form uk-form-icon">
+        <i class="uk-icon-user"></i>
+        <%= f.text_field :login, placeholder: 'username', class: 'uk-width-1-1', html: {spellcheck: "false"} %>
     </div>
-  </div>
-  
 
-  <div class="form-group">
-    <%= f.label :password, class: "control-label col-md-4" %>
-    <div class="col-md-8">
-      <%= f.password_field :password, class: "text-field form-control", html: {autocomplete: "off"} %>
+    <div class="uk-form-row large-form uk-form-icon">
+        <i class="uk-icon-lock"></i>
+        <%= f.password_field :password, placeholder: 'password', class: 'uk-width-1-1',  html: {autocomplete: "off"} %>
+        <%= link_to "Show", nil, class:"uk-form-password-toggle", data: {uk_form_password: nil} %>
     </div>
-  </div>
-                                                                                                                                        
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.label :remember_me, "Remember Me", class: "control-label col-md-4" %>
-      <div class="col-md-8">
+
+    <div class="uk-form-row">
+        <%= f.submit "LOGIN", class: "uk-button uk-width-1-1" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+    <div class="uk-form-row uk-width-1-1">
+        <%= f.label :remember_me, class: "uk-form-label  uk-form-controls uk-form-controls-text" do  %>
         <%= f.check_box :remember_me %>
-      </div>
+        Remember Me
+        <% end %>
     </div>
-  <% end -%>
-                                                                                                                                        
-  <div class="form-group">
-    <div class="col-md-offset-4 col-md-8">
-      <%= f.submit "Login", class: "btn btn-primary" %>
-    </div>
-  </div>
+    <% end -%>
 
-  <div class="form-group">
-    <div class="col-md-offset-4 col-md-8">
-      <%= render "devise/shared/links" %>
+    <div class="uk-form-row">
+        <%= render "devise/shared/links" %>
     </div>
-  </div>
-
+</fieldset>
 <% end %>

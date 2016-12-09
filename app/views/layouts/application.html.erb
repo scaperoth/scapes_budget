@@ -3,29 +3,42 @@
     <head>
         <title>ScapesBudget</title>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'session', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!-- Prelang: Analytics / Google Analytics -->
         <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
     <body>
+      
+        <div class="uk-cover-background uk-height-viewport" style="background-image: url(/assets/stocks.jpeg);">
+            <nav class="uk-navbar" role="navigation" style="margin-bottom: 0">
+                <div class="uk-grid">
+                    <div class="uk-width-small-9-10 uk-container-center">
+                        <%= render partial: "elements/navbar" %>
+                        <% if defined?(Devise) %>
+                        <% if user_signed_in? %>
+                        <%= render partial: "elements/sidebar" %>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </nav>
 
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <%= render partial: "elements/navbar" %>
-            <% if defined?(Devise) %>
-            <% if user_signed_in? %>
-            <%= render partial: "elements/sidebar" %>
-            <% end %>
-            <% end %>
-        </nav>
+            <div id="page-wrapper" class="uk-grid ">
+              <% if controller.controller_name == "sessions" %>
+                  <div class="uk-width-small-1-2 uk-container-center transparent-black uk-height-viewport">
+                      <div class="uk-width-small-1-2 uk-container-center">
 
-        <div id="page-wrapper" class="container-fluid">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
-                    <%= bootstrap_flash %>
+                          <%= yield %>
+                      </div>
+                  </div>
+              <% else %>
+                <div class="uk-width-small-8-10 uk-container-center">
 
                     <%= yield %>
                 </div>
+                
+            <% end %>
             </div>
         </div>
     </body>

@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require uikit/components/slideshow.self
+//= require uikit/components/slideshow-fx.self
+//= require uikit
 //= require turbolinks
-//= require bootstrap
-//= require metisMenu
-//= require raphael
-//= require morris
 //= require_tree .

@@ -1,0 +1,84 @@
+// Place all the styles related to the style framework here.
+// They will automatically be included in application.css.scss
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$brand-primary: #8ead85;
+$link-color: #97cfff;
+$body-bg: #efefee;
+$text-color: #333332;
+
+@import "uikit"; // Default Theme
+//
+/* HTML STYLES */
+a {
+    color: $brand-primary;
+}
+
+a:hover{
+  color: darken($brand-primary, 20%);
+}
+//
+/* NAVBAR STYLES */
+.uk-navbar {
+    background-color: rgba(20,20,20,0.7);
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    background-color: rgba(240,240,240,0.8);
+}
+
+.uk-navbar-brand {
+    color: $brand-primary;
+}
+
+.uk-navbar-nav > li > a {
+    color:  $brand-primary;
+}
+//
+/* MISC */
+.transparent-black {
+    background-color: rgba(20, 20, 20, 0.8);
+    margin-top: -40px;
+    padding-top: 40px;
+
+    & > * {
+        color: #f9f9f9;
+    }
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #444 inset !important;
+    -webkit-text-fill-color: lighten($brand-primary, 20%);
+}
+//
+/* FORM STYLES */
+.form-user {
+    padding-top: 140px;
+
+    input {
+        border-radius: 2px;
+        font-size: 1.7em;
+    }
+
+    .large-form {
+        display: block;
+
+        input {
+            background: #000;
+            min-height: 60px;
+            color:lighten($brand-primary, 20%);
+            
+            &:focus {
+                background: #222;
+                color:darken($brand-primary, 10%);
+            }
+        }
+    }
+
+    .uk-button[type="submit"] {
+        background: $brand-primary;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #efefef;
+        padding: 15px 0;
+    }
+}

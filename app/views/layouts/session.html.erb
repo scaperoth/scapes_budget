@@ -10,21 +10,28 @@
         <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
     <body>
 
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <%= render partial: "elements/navbar" %>
-            <% if defined?(Devise) %>
-            <% if user_signed_in? %>
-            <%= render partial: "elements/sidebar" %>
-            <% end %>
-            <% end %>
-        </nav>
+        <div class="uk-cover-background uk-height-viewport" style="background-image: url(/assets/stocks.jpeg);">
+            <nav class="uk-navbar" role="navigation" style="margin-bottom: 0">
+                <div class="uk-grid">
+                    <div class="uk-width-small-1-9 ">
+                        <%= render partial: "elements/navbar" %>
+                        <% if defined?(Devise) %>
+                        <% if user_signed_in? %>
+                        <%= render partial: "elements/sidebar" %>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </nav>
 
-        <div id="page-wrapper" class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-4">
-                    <%= bootstrap_flash %>
+            <div id="page-wrapper" class="uk-grid ">
+                <div class="uk-width-small-9-10">
+                    <div class="uk-width-small-1-2 uk-container-center transparent-black uk-height-viewport">
+                        <div class="uk-width-small-1-2 uk-container-center">
 
-                    <%= yield %>
+                            <%= yield %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

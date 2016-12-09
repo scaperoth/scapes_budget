@@ -1,6 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
   include ApplicationHelper
-  layout 'session'
 
   def create
     super

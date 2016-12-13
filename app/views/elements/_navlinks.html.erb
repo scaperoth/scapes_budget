@@ -2,23 +2,20 @@
 <% if user_signed_in? %>
 <li class="<%= active_class(destroy_user_session_path) %>">
     <%= link_to destroy_user_session_path, method: :delete do %>
-    <i class="fa fa-sign-out fa-fw"></i>
-    Sign Out
+    <i title="Sign Out" class="fa fa-lock fa-fw"></i> Sign Out
     <% end %>
 
 </li>
 <% else %>
 <li class="<%= active_class(new_user_session_path) %>">
     <%= link_to new_user_session_path do %>
-    <i class="fa fa-sign-in fa-fw"></i>
-    Sign In
+    <i title="Sign In" class="fa fa-sign-in fa-fw"></i> Sign In
     <% end %>
 
 </li>
 <li class="<%= active_class(new_user_registration_path) %>">
     <%= link_to new_user_registration_path do %>
-    <i class="fa fa-edit fa-fw"></i>
-    Sign Up
+    <i title="Register" class="fa fa-user-plus fa-fw"></i> Sign Up
     <% end %>
 
 </li>

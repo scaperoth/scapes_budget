@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "uk-form uk-form-stacked form-user"}) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "uk-form uk-form-stacked form-user"}) do |f| %>
 <fieldset>
 
     <div class="uk-form-row large-form uk-form-icon">
@@ -17,8 +17,8 @@
     </div>
 
     <% if devise_mapping.rememberable? -%>
-    <div class="uk-form-row uk-width-1-1">
-        <%= f.label :remember_me, class: "uk-form-label  uk-form-controls uk-form-controls-text" do  %>
+    <div class="uk-form-row uk-width-1-1 large-font margin-top-15 remember-me">
+        <%= f.label :remember_me, class: "uk-form-label uk-form-controls uk-form-controls-text" do  %>
         <%= f.check_box :remember_me %>
         Remember Me
         <% end %>

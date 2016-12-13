@@ -1,62 +1,145 @@
 // Place all the styles related to the style framework here.
 // They will automatically be included in application.css.scss
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-$brand-primary: #8ead85;
-$link-color: #97cfff;
+/* FONTS */
+@import url( 'https://fonts.googleapis.com/css?family=Didact+Gothic|Unna');
+$brand-primary: #6e9862;
 $body-bg: #efefee;
-$text-color: #333332;
-
+$header-font: 'Didact Gothic';
+$header-font-fallback: sans-serif;
+$text-font: 'Unna';
+$text-font-fallback: serif;
 @import "uikit"; // Default Theme
 //
 /* HTML STYLES */
+* {
+    font-family: $text-font, $text-font-fallback;
+}
+
 a {
     color: $brand-primary;
 }
 
-a:hover{
-  color: darken($brand-primary, 20%);
-}
-//
-/* NAVBAR STYLES */
-.uk-navbar {
-    background-color: rgba(20,20,20,0.7);
+a:hover {
+    color: darken($brand-primary, 20%);
 }
 
-.uk-navbar-nav > li.uk-active > a {
-    background-color: rgba(240,240,240,0.8);
-}
-
-.uk-navbar-brand {
-    color: $brand-primary;
-}
-
-.uk-navbar-nav > li > a {
-    color:  $brand-primary;
+h1,
+h2,
+h3,
+h4 {
+    font-family: $header-font, $header-font-fallback;
 }
 //
 /* MISC */
 .transparent-black {
     background-color: rgba(20, 20, 20, 0.8);
-    margin-top: -40px;
-    padding-top: 40px;
 
     & > * {
         color: #f9f9f9;
     }
 }
+
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #444 inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #333 inset !important;
     -webkit-text-fill-color: lighten($brand-primary, 20%);
+}
+/* ALERTS */
+.uk-alert {
+    font-size: 1.5em;
+    text-align: center;
+}
+//
+/* NAVBAR STYLES */
+.uk-navbar {
+    background-color: rgba(20,20,20,0.7);
+
+    * {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+}
+
+.uk-navbar-nav > li > a {
+    color: darken($brand-primary, 10%);
+    background: transparent;
+}
+
+.uk-navbar-toggle {
+    color: $brand-primary;
+
+    &:hover {
+        color: $brand-primary;
+    }
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    background-color: transparent;
+    font-weight: bold;
+    color: $brand-primary;
+    font-size: 1.2em;
+}
+
+.uk-navbar-nav > li > a:focus,
+.uk-navbar-nav > li.uk-open > a,
+.uk-navbar-nav > li:hover > a {
+    background-color: transparent;
+    color: lighten($brand-primary, 25%);
+}
+
+.uk-navbar-brand {
+    color: $brand-primary;
+    font-family: $header-font, $header-font-fallback;
+    text-transform: uppercase;
+    letter-spacing: 6px;
 }
 //
 /* FORM STYLES */
+.uk-form input:not([type]),
+.uk-form input[type="datetime"],
+.uk-form input[type="email"],
+.uk-form input[type="number"],
+.uk-form input[type="password"],
+.uk-form input[type="search"],
+.uk-form input[type="tel"],
+.uk-form input[type="text"],
+.uk-form input[type="url"] {
+    border: 1px solid #444;
+}
+
 .form-user {
-    padding-top: 140px;
+    padding-top: 80px;
+
+    .form-links,
+    .large-font {
+        > * {
+            font-size: 1.5em;
+        }
+    }
+
+    .form-links {
+        padding-top: 20px;
+
+        p {
+            padding: 0;
+            margin: 2px 0;
+        }
+    }
 
     input {
         border-radius: 2px;
         font-size: 1.7em;
+        border: 1px solid #444;
+    }
+
+    .uk-form-row {
+        margin-top: 8px;
+    }
+
+    .remember-me {
+        margin-top: 15px !important;
+        letter-spacing: 3px;
+        font-weight: 400;
     }
 
     .large-form {
@@ -65,11 +148,11 @@ input:-webkit-autofill {
         input {
             background: #000;
             min-height: 60px;
-            color:lighten($brand-primary, 20%);
-            
+            color: lighten($brand-primary, 20%);
+
             &:focus {
                 background: #222;
-                color:darken($brand-primary, 10%);
+                color: darken($brand-primary, 10%);
             }
         }
     }
@@ -80,5 +163,12 @@ input:-webkit-autofill {
         font-size: 1.3em;
         color: #efefef;
         padding: 15px 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+
+        &:focus {
+            background: darken($brand-primary, 20%);
+            color: lighten($brand-primary, 30%);
+        }
     }
 }

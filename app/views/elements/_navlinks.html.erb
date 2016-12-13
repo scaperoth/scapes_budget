@@ -1,3 +1,9 @@
+<li class="<%= active_class(root_path) %>">
+    <%= link_to root_path, method: :delete do %>
+    <i title="Home" class="fa fa-home fa-fw"></i> Home
+    <% end %>
+
+</li>
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
 <li class="<%= active_class(destroy_user_session_path) %>">

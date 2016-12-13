@@ -12,7 +12,7 @@
 
         <nav class="uk-navbar" role="navigation" style="margin-bottom: 0">
             <div class="uk-grid">
-                <div class="uk-width-small-9-10 uk-container-center">
+                <div class="navbar-container uk-width-small-9-10 uk-container-center">
                     <%= render partial: "elements/navbar" %>
                     <% if defined?(Devise) %>
                     <% if user_signed_in? %>
@@ -24,31 +24,35 @@
         </nav>
 
         <div id="page-wrapper" class="uk-grid ">
+            <% if controller.controller_name != 'pages' %>
             <div class="uk-width-small-1-1" style="margin-top:10px; min-height:55px; z-index:2;">
                 <div class="uk-width-small-1-1 uk-container-center ">
                     <%= uikit_messages %>
                 </div>
             </div>
-            <% if devise_controller?  %>
+            <% end %>
 
-            <div class="uk-cover-background uk-height-viewport uk-width-viewport full-bg" style="background-image: url(assets/<%= background_image %>);">
-                <div class="transparent-<%= background_color %> uk-height-viewport uk-width-viewport">
-                    <div class="uk-width-1-2 uk-width-medium-1-2 uk-container-center ">
-                        <div class="uk-width-medium-1-2 uk-container-center">
+            <div class="main-content uk-width-1-1">
+                <% if devise_controller?  %>
 
-                            <%= yield %>
+                <div class="uk-cover-background uk-height-viewport uk-width-viewport full-bg" style="background-image: url(assets/<%= background_image %>);">
+                    <div class="transparent-<%= background_color %>-9 uk-height-viewport uk-width-viewport inner-overlay">
+                        <div class="uk-width-1-2 uk-width-medium-1-2 uk-container-center ">
+                            <div class="uk-width-medium-1-2 uk-container-center">
+
+                                <%= yield %>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <% else %>
-            <%= render partial: 'elements/banner' %>
+            <% else %>
 
-            <div class="uk-width-small-1-1 uk-container-center main-content">
-                <%= yield %>
-            </div>
+                <div class="uk-width-small-1-1 uk-container-center">
+                    <%= yield %>
+                </div>
 
-            <% end %>
+                <% end %>
+            </div>
         </div>
     </body>
 </html>

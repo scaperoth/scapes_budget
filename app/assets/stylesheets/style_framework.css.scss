@@ -3,17 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* FONTS */
 @import url( 'https://fonts.googleapis.com/css?family=Didact+Gothic|Unna');
-$brand-primary: #6e9862;
+$brand-primary: #7DC076;
+$brand-secondary: #B5DCB1;
+$brand-tertiary: #2F7570;
+$white: #fefefe;
 $body-bg: #efefee;
 $header-font: 'Didact Gothic';
 $header-font-fallback: sans-serif;
 $text-font: 'Unna';
 $text-font-fallback: serif;
 @import "uikit"; // Default Theme
+@import "mixins"; // mixins for theme
 //
 /* HTML STYLES */
 * {
     font-family: $text-font, $text-font-fallback;
+}
+
+.main-content > * {
+  color:$white;
 }
 
 .serif {
@@ -37,46 +45,71 @@ h2,
 h3,
 h4 {
     font-family: $header-font, $header-font-fallback;
-    color: lighten($brand-primary, 40%);
+    color: $white;
 }
 //
 /* MISC */
-.brand-color{
-  color: $brand-primary;
+.sb-primary-color {
+    color: $brand-primary;
+
+    &-light {
+        color: lighten($brand-primary, 13%);
+    }
+
+    &-dark {
+        color: darken($brand-primary, 13%);
+    }
 }
+
+.sb-secondary-color {
+    color: $brand-secondary;
+
+    &-light {
+        color: lighten($brand-secondary, 13%);
+    }
+
+    &-dark {
+        color: darken($brand-secondary, 13%);
+    }
+}
+
 .top-padding {
     padding-top: 100px !important;
 }
 
-.transparent-black {
-    background-color: rgba(20, 20, 20, 0.7);
-
-    & > * {
-        color: #f9f9f9;
-    }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #555 inset !important;
+    -webkit-text-fill-color: lighten($brand-primary, 20%);
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #333 inset !important;
-    -webkit-text-fill-color: lighten($brand-primary, 20%);
+/* ALERTS */
+.uk-alert {
+    color: #444;
+    font-size: 1.5em;
+    text-align: center;
+    #flash_alert{
+      color:#444;
+    }
 }
 //
 /* NAVBAR STYLES */
 .uk-navbar {
-    background-color: rgba(20,20,20,0.8);
+    background: rgba(20,20,20,0.5);
     position: relative;
     z-index: 999;
+    min-height: 40px;
+    padding: 20px 0;
 
     * {
         text-transform: uppercase;
-        letter-spacing: 3px;
     }
+
 }
 
 .uk-navbar-nav > li > a {
     color: $brand-primary;
     background: transparent;
-    font-family: $text-font, $text-font-fallback;
+    font-family: $header-font, $header-font-fallback;
     font-size: 1.5em;
 }
 
@@ -90,7 +123,7 @@ input:-webkit-autofill {
 
 .uk-navbar-nav > li.uk-active > a {
     background-color: transparent;
-    color: lighten($brand-primary, 50%);
+    color: $white;
     background-color: darken($brand-primary, 10%);
 }
 
@@ -98,9 +131,8 @@ input:-webkit-autofill {
 .uk-navbar-nav > li.uk-open > a,
 .uk-navbar-nav > li:hover > a {
     background-color: transparent;
-    color: lighten($brand-primary, 25%);
-    color: lighten($brand-primary, 50%);
-    background-color: darken($brand-primary, 20%);
+    color: $white;
+    background-color: darken($brand-primary, 12%);
 }
 
 .uk-navbar-brand {
@@ -108,10 +140,10 @@ input:-webkit-autofill {
     font-family: $header-font, $header-font-fallback;
     text-transform: uppercase;
     letter-spacing: 6px;
-    font-size: 1.5em;
-
+    font-size: 2em;
+    padding-top:10px;
     &:hover {
-        color: lighten($brand-primary, 20%);
+        color: $brand-primary;
     }
 }
 
@@ -120,31 +152,43 @@ input:-webkit-autofill {
 }
 /* BACKGROUND */
 .full-bg {
-    margin-top: -105px;
+    margin-top: -145px;
     padding: 0;
     z-index: 1;
-
-    .inner-overlay {
-        padding: 3% 4%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    &.offset-80{
+      height:100vh + get-vh(80px);
+      .inner-overlay {
+        height:100vh + get-vh(80px);
+      }
     }
-}
-/* ALERTS */
-.uk-alert {
-    font-size: 1.5em;
-    text-align: center;
+    .inner-overlay {
+        padding: 155px 4%;
+    }
 }
 /* HEADINGS */
 .big-title {
-    padding: 40px 20px;
-
+    padding: 0 20px;
+    letter-spacing: 20px;
     > * {
-        line-height: 1em;
+        line-height: .9em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        padding: 0;
+        margin: 0;
     }
 
     h1 {
         font-size: 10em;
-        font-size: 15vh;
-        line-height: 0.8em;
+        font-size: 12vh;
+        line-height: 0.9em;
     }
 
     h2 {
@@ -179,7 +223,7 @@ section {
 }
 
 .form-user {
-    padding-top: 40%;
+    padding-top: 30%;
 
     .form-links,
     .large-font {
@@ -217,19 +261,19 @@ section {
         display: block;
 
         input {
-            background: #000;
+            background-color: rgba(10,10,10,.5);
             min-height: 60px;
             color: lighten($brand-primary, 20%);
 
             &:focus {
-                background: #222;
+                background: rgba(30,30,30,.5);
                 color: darken($brand-primary, 10%);
             }
         }
     }
 
     .uk-button[type="submit"] {
-        background: $brand-primary;
+        background: darken($brand-primary, 10%);
         font-weight: bold;
         font-size: 1.3em;
         color: #efefef;
@@ -243,41 +287,16 @@ section {
         }
     }
 }
-
-
 /* Large Screens */
 @media (min-width:1000px) {
     /* BACKGROUND */
     .full-bg {
         .inner-overlay {
-            padding-top: 5%;
             padding-left: 7%;
         }
     }
     /* HEADINGS */
     .big-title {
-      padding-top:60px;
-        h1 {
-            font-size: 11em;
-            font-size: 8vw;
-        }
-        h2 {
-            font-size: 8em;
-            font-size: 5vw;
-        }
-        p {
-            font-size: 3em;
-            font-size: 2vw;
-            letter-spacing: 9px;
-            line-height: 2em;
-        }
-        .left{
-          text-align: left;
-          float:left;
-        }
-        .right{
-          float:right;
-          text-align: right;
-        }
+        padding-top: 0;
     }
 }

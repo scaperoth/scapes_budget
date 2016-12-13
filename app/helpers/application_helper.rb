@@ -17,11 +17,7 @@ module ApplicationHelper
     end
 
     def background_image
-        if devise_controller?
-            'stocks.jpeg'
-        else
-            'bag.jpeg'
-        end
+        'leaf_maze.jpeg'
     end
 
     def background_color

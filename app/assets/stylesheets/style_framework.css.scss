@@ -41,9 +41,10 @@ h4 {
 }
 //
 /* MISC */
-.top-padding{
-  padding-top:100px!important;
+.top-padding {
+    padding-top: 100px !important;
 }
+
 .transparent-black {
     background-color: rgba(20, 20, 20, 0.7);
 
@@ -55,35 +56,6 @@ h4 {
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #333 inset !important;
     -webkit-text-fill-color: lighten($brand-primary, 20%);
-}
-/* HEADINGS */
-.big-title {
-    padding: 20px;
-    > * {
-        line-height: 1em;
-    }
-
-    h1 {
-        font-size: 10em;
-        font-size: 15vh;
-        line-height: 0.8em;
-        letter-spacing: 4px;
-    }
-
-    h2 {
-        font-size: 8em;
-        font-size: 6vh;
-    }
-
-    p {
-        font-size: 3em;
-        font-size: 6vh;
-    }
-}
-/* ALERTS */
-.uk-alert {
-    font-size: 1.5em;
-    text-align: center;
 }
 //
 /* NAVBAR STYLES */
@@ -128,6 +100,56 @@ input:-webkit-autofill {
     font-family: $header-font, $header-font-fallback;
     text-transform: uppercase;
     letter-spacing: 6px;
+}
+.uk-offcanvas-bar{
+  background-color: darken($brand-primary, 45%);
+}
+/* BACKGROUND */
+.full-bg {
+    margin-top:-105px;
+    padding:0;
+    z-index: -1;
+    .inner-overlay{
+      padding-top: 8%;
+      padding-left:2%;
+    }
+}
+/* ALERTS */
+.uk-alert {
+    font-size: 1.5em;
+    text-align: center;
+}
+/* HEADINGS */
+.big-title {
+    padding: 20px;
+
+    > * {
+        line-height: 1em;
+    }
+
+    h1 {
+        font-size: 10em;
+        font-size: 15vh;
+        line-height: 0.8em;
+        letter-spacing: 4px;
+    }
+
+    h2 {
+        font-size: 8em;
+        font-size: 6vh;
+    }
+
+    p {
+        font-size: 3em;
+        font-size: 6vh;
+    }
+}
+/* LAYOUTS */
+section{
+  &.content-section{
+    min-height:200px;
+    padding:20px;
+  }
 }
 //
 /* FORM STYLES */
@@ -208,19 +230,25 @@ input:-webkit-autofill {
         }
     }
 }
-
-@media (min-width:1200px){
-  /* HEADINGS */
-  .big-title {
-
-      h1 {
-          font-size: 10em;
-          font-size: 7.5vw;
+/* Large Screens */
+@media (min-width:1200px) {
+  /* BACKGROUND */
+  .full-bg {
+      .inner-overlay{
+        padding-top:5%;
+        padding-left:4%;
       }
-      p{
-        font-size: 3em;
-        font-size: 2vw;
-      }
-
   }
+    /* HEADINGS */
+    .big-title {
+        h1 {
+            font-size: 10em;
+            font-size: 7.5vw;
+        }
+
+        p {
+            font-size: 3em;
+            font-size: 2vw;
+        }
+    }
 }

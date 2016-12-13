@@ -15,4 +15,20 @@ module ApplicationHelper
 
         output.html_safe
     end
+
+    def background_image
+        if devise_controller?
+            'stocks.jpeg'
+        else
+            'bag.jpeg'
+        end
+    end
+
+    def background_color
+        if devise_controller?
+            'black'
+        else
+            'black'
+        end
+    end
 end

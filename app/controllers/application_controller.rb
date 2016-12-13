@@ -30,10 +30,10 @@ class ApplicationController < ActionController::Base
       # them to the root path.
       if request.env['HTTP_REFERER']
         fallback_redirect = :back
-      elsif defined?(new_user_session_path)
-        fallback_redirect = new_user_session_path
+      elsif defined?(root_path)
+        fallback_redirect = root_path
       else
-        fallback_redirect = "/login"
+        fallback_redirect = "/"
       end
 
       redirect_to fallback_redirect, flash: {error: "You must be signed in to view this page."}

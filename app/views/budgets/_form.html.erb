@@ -11,7 +11,10 @@
       <%= f.text_field :planned_savings, :class => 'text-field form-control' %>
     </div>
   </div>
-
+  
+  <div class="form-group">
+    <%= f.collection_select :frequency_id, Frequency.order(:name),:id,:name, include_blank: false %>
+  </div>
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>

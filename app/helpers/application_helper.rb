@@ -1,8 +1,13 @@
 module ApplicationHelper
-    def active_class(link_path)
+    def active_class(link_path = '')
+        return 'uk-active' if link_path == ''
         current_page?(link_path) ? 'uk-active' : ''
    end
-
+   
+   def account_page?
+     controller.controller_name == 'registrations' && controller.action_name == 'edit'
+   end
+   
     def uikit_messages
         output = ''
         flash.each do |name, msg|
@@ -17,11 +22,11 @@ module ApplicationHelper
     end
 
     def background_image
-        'bike.jpeg'
+        'bike.jpg'
     end
     
     def glyph(icon)
-      content_tag :i, nil, class: "fa fa-"+icon 
+      content_tag :i, nil, class: "fa fa-fw fa-"+icon 
     end
 
 end

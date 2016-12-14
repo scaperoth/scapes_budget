@@ -1,5 +1,20 @@
 <%- model_class = Budget -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Budget %></h1>
-</div>
-<%= render :partial => 'form' %>
+<% content_for :head do %>
+<%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Budget %>
+<br/>
+<small><%= @budget.name %></small>
+<% end %>
+
+<section class="page-section">
+    <div class="uk-width-1-4 uk-container-center ">
+        <%= render :partial => 'form' %>
+    </div>
+</section>
+
+<section class="page-section">
+    <%= render template: '/incomes/index' %>
+</section>
+
+<section class="page-section">
+    <%= render template: '/expenses/index' %>
+    <section>

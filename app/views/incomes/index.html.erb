@@ -1,8 +1,8 @@
 <%- model_class = Income -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Income %></h1>
+<div class="section-header">
+<h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class %></h1>
 </div>
-<table class="table table-striped">
+<table class="uk-table uk-table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -18,18 +18,15 @@
     <% @incomes.each do |income| %>
       <tr>
         <td><%= income.id %></td>
-        <td><%= income.frequency %></td>
+        <td><%= income.frequency.name.capitalize %></td>
         <td><%= income.name %></td>
         <td><%= income.amount %></td>
         <td><%= income.notes %></td>
         <td><%=l income.created_at, format: :long %></td>
         <td>
-          <%= link_to income_path(income), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
+          <%= link_to income_path(income), :class => 'uk-icon-button uk-icon-pencil uk-text-primary', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
           <%- end -%>
-          <%= link_to income_path(income), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
+          <%= link_to income_path(income), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'uk-icon-button uk-icon-remove uk-text-danger', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
           <%- end -%>
         </td>
       </tr>
@@ -39,4 +36,4 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_budget_income_path(@budget),
-            :class => 'btn btn-primary' %>
+            :class => 'uk-button uk-button-primary' %>

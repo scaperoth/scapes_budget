@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
   before_action :set_income, only: [:show, :edit, :update, :destroy]
-  before_action :set_budget, only: [:index, :show, :new, :create, :destroy]
+  before_action :set_budget, only: [:index, :edit, :show, :new, :create, :destroy]
 
   # GET /incomes
   # GET /incomes.json
@@ -35,8 +35,8 @@ class IncomesController < ApplicationController
 
     respond_to do |format|
       if @income.save
-        format.html { redirect_to @income, notice: 'Income was successfully created.' }
-        format.json { render :show, status: :created, location: @income }
+        format.html { redirect_to edit_budget_path(@budget), notice: 'Income was successfully created.' }
+        format.json { render :show, status: :created, location: edit_budget_path(@budget) }
       else
         format.html { render :new }
         format.json { render json: @income.errors, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class IncomesController < ApplicationController
   def destroy
     @income.destroy
     respond_to do |format|
-      format.html { redirect_to budget_incomes_url(@budget), notice: 'Income was successfully destroyed.' }
+      format.html { redirect_to edit_budget_path(@budget), notice: 'Income was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

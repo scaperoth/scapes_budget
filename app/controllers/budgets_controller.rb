@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
     before_action :set_budget, only: [:show, :edit, :update, :destroy]
-
+    before_action :set_income_and_expense, only: [:show, :edit]
     # GET /budgets
     # GET /budgets.json
     def index
@@ -67,7 +67,12 @@ class BudgetsController < ApplicationController
     def set_budget
         @budget = Budget.find(params[:id])
     end
-
+    
+    def set_income_and_expense
+        @incomes = Income.all.where(budget_id: @budget.id)
+        @expenses = Expense.all.where(budget_id: @budget.id)
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
         params.require(:budget).permit(:name, :planned_savings, :user_id, :frequency_id)

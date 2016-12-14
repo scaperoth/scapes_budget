@@ -19,5 +19,9 @@ module ApplicationHelper
     def background_image
         'bike.jpeg'
     end
+    
+    def glyph(icon)
+      content_tag :i, nil, class: "fa fa-"+icon 
+    end
 
 end

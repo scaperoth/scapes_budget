@@ -16,13 +16,15 @@ $text-font-fallback: serif;
 @import "mixins"; // mixins for theme
 //
 /* HTML STYLES */
+html{
+  background: #fefefe;
+}
 * {
     font-family: $text-font, $text-font-fallback;
 }
 
 .main-content {
   > * {
-    color:$white;
   }
 }
 
@@ -47,7 +49,6 @@ h2,
 h3,
 h4 {
     font-family: $header-font, $header-font-fallback;
-    color: $white;
 }
 //
 /* MISC */
@@ -77,6 +78,10 @@ h4 {
 
 .top-padding {
     padding-top: 100px !important;
+    
+    &-20{
+      padding-top:20px!important;
+    }
 }
 
 input:-webkit-autofill {
@@ -201,6 +206,12 @@ section {
         padding: 20px;
     }
 }
+
+.small-banner{
+  margin-top:-80px;
+  padding-top:145px;
+}
+
 //
 /* FORM STYLES */
 .uk-form input:not([type]),
@@ -217,11 +228,12 @@ section {
 
 .form-user {
     padding-top: 15vh;
-
+    
     .form-links,
     .large-font {
         > * {
             font-size: 1.5em;
+            color:$white;
         }
     }
 
@@ -293,6 +305,9 @@ section {
   
   .big-title{
     letter-spacing: 20px;
+    > * {
+      color: $white;
+    }
     h1 {
         font-size: 8em;
         font-size: 10vh;
@@ -301,7 +316,7 @@ section {
 }
 
 /* Short Wide Screen */
-@media (max-height:400px) {
+@media (max-height:400px) and (max-width:800px) {
   .big-title{
     padding-top:50px;
     letter-spacing: 20px;

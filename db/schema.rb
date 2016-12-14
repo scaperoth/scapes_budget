@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206210206) do
+ActiveRecord::Schema.define(version: 20161214162806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20161206210206) do
     t.string   "name"
     t.decimal  "planned_savings"
     t.integer  "user_id"
+    t.integer  "frequency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,10 +93,10 @@ ActiveRecord::Schema.define(version: 20161206210206) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "expenses", force: true do |t|
-    t.string   "frequency"
     t.string   "name"
     t.decimal  "amount"
     t.text     "notes"
+    t.integer  "frequency_id"
     t.integer  "budget_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -105,13 +106,19 @@ ActiveRecord::Schema.define(version: 20161206210206) do
   add_index "expenses", ["budget_id"], name: "index_expenses_on_budget_id", using: :btree
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
 
+  create_table "frequencies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "incomes", force: true do |t|
-    t.string   "frequency"
     t.string   "name"
     t.decimal  "amount"
     t.text     "notes"
     t.integer  "budget_id"
     t.integer  "user_id"
+    t.integer  "frequency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

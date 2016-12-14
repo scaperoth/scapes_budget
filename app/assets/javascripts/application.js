@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require uikit/components/slideshow.self
-//= require uikit/components/slideshow-fx.self
-//= require uikit
+//= require uikit.min
 //= require turbolinks
 //= require_tree .

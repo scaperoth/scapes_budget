@@ -1,26 +1,26 @@
+<% mobile_nav ||= false %>
+<li class="<%= active_class(root_path) %>">
+    <%= link_to root_path do %>
+    <% if !mobile_nav %><i title="Home" class="fa fa-home fa-fw"></i><% end %> Home
+    <% end %>
+</li>
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
 <li class="<%= active_class(destroy_user_session_path) %>">
     <%= link_to destroy_user_session_path, method: :delete do %>
-    <i class="fa fa-sign-out fa-fw"></i>
     Sign Out
     <% end %>
-
 </li>
 <% else %>
 <li class="<%= active_class(new_user_session_path) %>">
     <%= link_to new_user_session_path do %>
-    <i class="fa fa-sign-in fa-fw"></i>
     Sign In
     <% end %>
-
 </li>
 <li class="<%= active_class(new_user_registration_path) %>">
     <%= link_to new_user_registration_path do %>
-    <i class="fa fa-edit fa-fw"></i>
     Sign Up
     <% end %>
-
 </li>
 <% end %>
 <% end %>

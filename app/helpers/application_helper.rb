@@ -15,4 +15,9 @@ module ApplicationHelper
 
         output.html_safe
     end
+
+    def background_image
+        'bike.jpeg'
+    end
+
 end

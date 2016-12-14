@@ -1,0 +1,21 @@
+$shades: 10;
+
+@mixin transparent-background-list {
+  @for $i from 0 through $shades - 1 {
+  .transparent-black-#{$i} { 
+        background-color: rgba(20, 20, 20, $i/10);
+   }
+  }
+}
+
+@include transparent-background-list;
+
+@function get-vw($target) { 
+  $vw-context: (1000*.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+
+@function get-vh($target) { 
+  $vh-context: (1000*.01) * 1px;
+  @return ($target/$vh-context) * 1vh;
+}

@@ -42,7 +42,6 @@ gem 'spring',        group: :development
 gem 'bundler'
 
 gem 'delayed_job_active_record'
-gem "uikit-sass-rails"
 gem 'font-awesome-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise', github: 'plataformatec/devise'

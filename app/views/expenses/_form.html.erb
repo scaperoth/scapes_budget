@@ -1,34 +1,25 @@
-<%= form_for @expense, :html => { :class => 'form-horizontal form-model' } do |f| %>
-  <div class="form-group">
-    <%= f.label :frequency, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :frequency, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :name, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :amount, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :amount, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :notes, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_area :notes, :class => 'text-field form-control' %>
-    </div>
-  </div>
+<% model ||= @expense %>
+<% path ||= expense_path %>
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  expenses_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+<%= simple_form_for model, :html => { :class => 'uk-form-vertical form-model page-form-centered' } do |f| %>
+
+<div class="uk-form-row ">
+  <%= f.input :frequency_id, collection: Frequency.order(:id), label_method: :readable_name, value_method: :id, include_blank: false %>
+</div>
+<div class="uk-form-row ">
+    <%= f.input :name, :class => 'text-field form-control' %>
+
+</div>
+<div class="uk-form-row ">
+    <%= f.input :amount, :class => 'text-field form-control' %>
+</div>
+<div class="uk-form-row ">
+    <%= f.input :notes, :class => 'text-field form-control' %>
+</div>
+
+<div class="uk-form-row ">
+    <%= f.submit nil, class: "uk-button uk-button-success" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  path, :class => 'uk-button uk-button-danger' %>
+</div>
 <% end %>

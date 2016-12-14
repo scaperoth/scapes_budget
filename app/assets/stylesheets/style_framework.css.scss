@@ -1,0 +1,419 @@
+// Place all the styles related to the style framework here.
+// They will automatically be included in application.css.scss
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* FONTS */
+@import url( 'https://fonts.googleapis.com/css?family=Raleway|Unna');
+$brand-primary: #7DC076;
+$brand-secondary: #B5DCB1;
+$brand-tertiary: #2F7570;
+$white: #fefefe;
+$body-bg: #efefee;
+$header-font: 'Raleway';
+$header-font-fallback: sans-serif;
+$text-font: 'Unna';
+$text-font-fallback: serif;
+@import "uikit.min"; // Default Theme
+@import "mixins"; // mixins for theme
+//
+/* HTML STYLES */
+html {
+    background: #fefefe;
+}
+
+* {
+    font-family: $text-font, $text-font-fallback;
+}
+
+.serif {
+    font-family: $text-font, $text-font-fallback;
+}
+
+.sans-serif {
+    font-family: $header-font, $header-font-fallback;
+}
+
+a {
+    color: $brand-primary;
+}
+
+a:hover {
+    color: darken($brand-primary, 20%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $header-font, $header-font-fallback;
+}
+//
+/* MISC */
+.sb-primary-color {
+    color: $brand-primary;
+
+    &-light {
+        color: lighten($brand-primary, 13%);
+    }
+
+    &-dark {
+        color: darken($brand-primary, 13%);
+    }
+}
+
+.sb-secondary-color {
+    color: $brand-secondary;
+
+    &-light {
+        color: lighten($brand-secondary, 13%);
+    }
+
+    &-dark {
+        color: darken($brand-secondary, 13%);
+    }
+}
+
+.top-padding {
+    padding-top: 100px !important;
+
+    &-20 {
+        padding-top: 20px !important;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #555 inset !important;
+    -webkit-text-fill-color: lighten($brand-primary, 20%);
+}
+/* LAYOUTS */
+section {
+    &.page-section {
+        min-height: 200px;
+        padding: 20px 0;
+    }
+}
+/* BACKGROUND */
+.full-bg {
+    margin-top: -82px;
+    height: 100vh;
+    padding: 0;
+    z-index: 1;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .inner-overlay {
+        height: 100vh;
+        padding: 80px 4% 0;
+    }
+}
+//
+/* NAVBAR STYLES */
+.uk-navbar {
+    background: rgba(20,20,20,0.5);
+    position: relative;
+    z-index: 999;
+    min-height: 40px;
+    padding: 20px 0;
+}
+
+.uk-navbar-nav > li > a {
+    color: $brand-primary;
+    background: transparent;
+    font-family: $header-font, $header-font-fallback;
+    font-size: 1.5em;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.uk-navbar-toggle {
+    padding-top: 9px;
+    color: $brand-primary;
+
+    &:hover {
+        color: $brand-primary;
+    }
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    background-color: transparent;
+    color: $white;
+    text-decoration: overline;
+}
+
+.uk-navbar-nav > li > a:focus,
+.uk-navbar-nav > li.uk-open > a,
+.uk-navbar-nav > li:hover > a {
+    color: $white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.uk-navbar-nav > li.uk-active:hover > a {
+    text-decoration: overline underline;
+}
+
+.uk-navbar-brand {
+    color: $brand-primary;
+    font-family: $header-font, $header-font-fallback;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 1.2em;
+    padding-top: 10px;
+
+    &:hover {
+        color: $brand-primary;
+    }
+}
+
+.uk-offcanvas-bar {
+    background-color: #333;
+}
+/* ALERTS */
+.alert-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+
+.uk-alert {
+    color: #444;
+    font-size: 1.5em;
+    text-align: center;
+
+    #flash_alert {
+        color: #444;
+    }
+}
+/* HEADINGS */
+.big-title {
+    padding-top: 80px;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    letter-spacing: 10px;
+
+    > * {
+        line-height: 0.9em;
+    }
+
+    h1 {
+        font-size: 6em;
+        font-size: 10vh;
+        line-height: 0.9em;
+    }
+}
+
+.page-header {
+    text-align: left;
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    width: 100vw;
+
+    h1 {
+        color: rgba(#fff, .6);
+        font-size: 4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        -webkit-transition: all 300ms ease-in-out;
+        -moz-transition: all 300ms ease-in-out;
+        -o-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+    }
+}
+
+.small-banner {
+    margin-top: -80px;
+    padding-top: 145px;
+    margin-bottom: 40px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+//
+/* FORM STYLES */
+.resource-show {
+    > * {
+        font-size: 1.5em;
+    }
+
+    dt {
+        padding-bottom: 5px;
+    }
+
+    .prettyprint {
+        font-size: 1.2em;
+    }
+}
+
+.uk-form input:not([type]),
+.uk-form input[type="datetime"],
+.uk-form input[type="email"],
+.uk-form input[type="number"],
+.uk-form input[type="password"],
+.uk-form input[type="search"],
+.uk-form input[type="tel"],
+.uk-form input[type="text"],
+.uk-form input[type="url"] {
+    border: 1px solid #444;
+}
+
+.page-form-centered {
+    .uk-form-row {
+        margin: 10px 0;
+        clear: both;
+    }
+
+    label {
+        font-family: $header-font, $header-font-fallback;
+        font-size: 1.5em;
+        float: left;
+    }
+
+    input,
+    select,
+    textarea {
+        float: right;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    a,
+    button {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    p {
+        clear: both;
+    }
+
+    .submit-row {
+        padding-top: 20px;
+    }
+}
+
+.form-user {
+    padding-top: 15vh;
+    color: $white;
+
+    .form-links,
+    .large-font {
+        > * {
+            font-size: 1.5em;
+            color: $white;
+        }
+    }
+
+    .form-links {
+        padding-top: 20px;
+
+        p {
+            padding: 0;
+            margin: 2px 0;
+        }
+    }
+
+    input {
+        border-radius: 2px;
+        font-size: 1.7em;
+        border: 1px solid #444;
+    }
+
+    .uk-form-row {
+        margin-top: 8px;
+    }
+
+    .remember-me {
+        margin-top: 15px !important;
+        letter-spacing: 3px;
+        font-weight: 400;
+    }
+
+    .large-form {
+        display: block;
+
+        input {
+            background-color: rgba(10,10,10,.5);
+            min-height: 60px;
+            color: lighten($brand-primary, 20%);
+
+            &:focus {
+                background: rgba(30,30,30,.5);
+                color: darken($brand-primary, 10%);
+            }
+        }
+    }
+
+    .uk-button[type="submit"] {
+        background: darken($brand-primary, 10%);
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #efefef;
+        padding: 15px 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+
+        &:focus {
+            background: darken($brand-primary, 20%);
+            color: lighten($brand-primary, 30%);
+        }
+    }
+}
+/* TABLE STYLES */
+.uk-table {
+    font-size: 1.5em;
+}
+@media (min-width:398px) {
+    .uk-navbar-brand {
+        font-size: 2em;
+    }
+
+    .uk-navbar-toggle {
+        padding-top: 8px;
+    }
+
+    .big-title {
+        letter-spacing: 20px;
+
+        > * {
+            color: $white;
+        }
+
+        h1 {
+            font-size: 8em;
+            font-size: 10vh;
+        }
+    }
+
+    .page-header {
+        h1 {
+            font-size: 5em;
+
+            small {
+                font-size: 0.5em;
+                letter-spacing: 5px;
+                color: rgba($white,0.5);
+                text-shadow: 0 0 50px $brand-tertiary;
+            }
+        }
+    }
+}
+/* Large Screens */
+@media (min-width:1000px) {
+    /* BACKGROUND */
+    .full-bg {
+        .inner-overlay {}
+    }
+    /* HEADINGS */
+    .big-title {}
+
+    .page-header {
+        h1 {
+            font-size: 8em;
+        }
+    }
+}

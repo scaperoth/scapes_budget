@@ -1,30 +1,38 @@
 <%- model_class = Expense -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Expense %></h1>
-</div>
+<% content_for :head do %>
+<%=t '.title', default: Expense %>
+<br/>
+<small><%= @expense.name %></small>
+<% end %>
+<section class="page-section resource-show">
+    <div class="uk-width-1-3 uk-container-center ">
+        <div class="fieldset">
+            <dl>
+                <dt class="label label-default"><%= model_class.human_attribute_name(:frequency) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @expense.frequency.name.capitalize %></pre>
+                </dd>
+                <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @expense.name %></pre>
+                </dd>
+                <dt class="label label-default"><%= model_class.human_attribute_name(:amount) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @expense.amount %></pre>
+                </dd>
+                <dt class="label label-default"><%= model_class.human_attribute_name(:notes) %></dt>
+                <dd>
+                    <pre class="prettyprint"><%= @expense.notes %></pre>
+                </dd>
+            </dl>
+        </div>
 
-<div class="fieldset">
-  <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:frequency) %></dt>
-      <dd><pre class="prettyprint"><%= @expense.frequency %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @expense.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:amount) %></dt>
-      <dd><pre class="prettyprint"><%= @expense.amount %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:notes) %></dt>
-      <dd><pre class="prettyprint"><%= @expense.notes %></pre></dd>
-  </dl>
+        <div class="form-group">
+            <%= link_to t('.back', :default => t("helpers.links.back")),
+              edit_budget_path(@budget), :class => 'uk-button uk-button-default'  %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_expense_path(@expense), :class => 'uk-button uk-button-default' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")), expense_path(@expense), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'uk-button uk-button-danger' %>
+        </div>
+    </div>
 </div>
-
-<div class="form-group">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              expenses_path, :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_expense_path(@expense), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              expense_path(@expense),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-

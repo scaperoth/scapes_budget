@@ -1,6 +1,11 @@
 <%- model_class = Expense -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Expense %></h1>
+<% content_for :head do %>
+  <%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Expense %>
+  <br/>
+  <small><%= @budget.name %></small>
+<% end %>
+
+<div class="uk-width-1-4 uk-container-center ">
+<%= render :partial => 'form', locals: {path: edit_budget_path(@budget), model: [@budget, @expense]} %>
 </div>
-<%= render :partial => 'form' %>
 

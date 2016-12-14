@@ -12,7 +12,7 @@ $header-font: 'Didact Gothic';
 $header-font-fallback: sans-serif;
 $text-font: 'Unna';
 $text-font-fallback: serif;
-@import "uikit"; // Default Theme
+@import "uikit.min"; // Default Theme
 @import "mixins"; // mixins for theme
 //
 /* HTML STYLES */
@@ -20,8 +20,10 @@ $text-font-fallback: serif;
     font-family: $text-font, $text-font-fallback;
 }
 
-.main-content > * {
-  color:$white;
+.main-content {
+  > * {
+    color:$white;
+  }
 }
 
 .serif {
@@ -83,6 +85,9 @@ input:-webkit-autofill {
 }
 
 /* ALERTS */
+.alert-container{
+  position:absolute;
+}
 .uk-alert {
     color: #444;
     font-size: 1.5em;
@@ -111,9 +116,14 @@ input:-webkit-autofill {
     background: transparent;
     font-family: $header-font, $header-font-fallback;
     font-size: 1.5em;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 
 .uk-navbar-toggle {
+    padding-top: 9px;
     color: $brand-primary;
 
     &:hover {
@@ -124,15 +134,18 @@ input:-webkit-autofill {
 .uk-navbar-nav > li.uk-active > a {
     background-color: transparent;
     color: $white;
-    background-color: darken($brand-primary, 10%);
+    background-color: rgba(darken($brand-primary, 10%), 0.4);
 }
 
 .uk-navbar-nav > li > a:focus,
 .uk-navbar-nav > li.uk-open > a,
 .uk-navbar-nav > li:hover > a {
-    background-color: transparent;
     color: $white;
-    background-color: darken($brand-primary, 12%);
+    background-color: transparent;
+}
+
+.uk-navbar-nav > li.uk-active:hover > a {
+  background-color: rgba(darken($brand-primary, 10%), 0.6);
 }
 
 .uk-navbar-brand {
@@ -140,7 +153,7 @@ input:-webkit-autofill {
     font-family: $header-font, $header-font-fallback;
     text-transform: uppercase;
     letter-spacing: 6px;
-    font-size: 2em;
+    font-size: 1.2em;
     padding-top:10px;
     &:hover {
         color: $brand-primary;
@@ -148,58 +161,38 @@ input:-webkit-autofill {
 }
 
 .uk-offcanvas-bar {
-    background-color: darken($brand-primary, 45%);
+    background-color: #333;
 }
 /* BACKGROUND */
 .full-bg {
-    margin-top: -145px;
+    margin-top: -82px;
+    height:100vh;
     padding: 0;
     z-index: 1;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     
-    &.offset-80{
-      height:100vh + get-vh(80px);
-      .inner-overlay {
-        height:100vh + get-vh(80px);
-      }
-    }
-    .inner-overlay {
-        padding: 155px 4%;
+    .inner-overlay{
+      height:100vh ;
+      padding: 80px 4% 0 4%;
     }
 }
 /* HEADINGS */
 .big-title {
-    padding: 0 20px;
-    letter-spacing: 20px;
+    padding-top:80px;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    letter-spacing: 10px;
     > * {
         line-height: .9em;
     }
-
-    h1,
-    h2,
-    h3,
-    p {
-        padding: 0;
-        margin: 0;
-    }
-
     h1 {
-        font-size: 10em;
-        font-size: 12vh;
+        font-size: 6em;
+        font-size: 10vh;
         line-height: 0.9em;
     }
 
-    h2 {
-        font-size: 8em;
-        font-size: 10vh;
-    }
-
-    p {
-        font-size: 3em;
-        font-size: 6vh;
-    }
 }
 /* LAYOUTS */
 section {
@@ -223,7 +216,7 @@ section {
 }
 
 .form-user {
-    padding-top: 30%;
+    padding-top: 15vh;
 
     .form-links,
     .large-font {
@@ -287,16 +280,46 @@ section {
         }
     }
 }
+
+@media (min-width:366px) {
+  
+  
+  .uk-navbar-brand {
+      font-size: 2em;
+  }
+  .uk-navbar-toggle {
+    padding-top:8px;
+  }
+  
+  .big-title{
+    letter-spacing: 20px;
+    h1 {
+        font-size: 8em;
+        font-size: 10vh;
+    }
+  }
+}
+
+/* Short Wide Screen */
+@media (max-height:400px) {
+  .big-title{
+    padding-top:50px;
+    letter-spacing: 20px;
+    h1 {
+        font-size: 8em;
+        font-size: 10vw;
+    }
+  }
+}
+
 /* Large Screens */
 @media (min-width:1000px) {
     /* BACKGROUND */
     .full-bg {
         .inner-overlay {
-            padding-left: 7%;
         }
     }
     /* HEADINGS */
     .big-title {
-        padding-top: 0;
     }
 }

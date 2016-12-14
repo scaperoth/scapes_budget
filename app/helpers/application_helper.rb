@@ -17,14 +17,7 @@ module ApplicationHelper
     end
 
     def background_image
-        'leaf_maze.jpeg'
+        'bike.jpeg'
     end
 
-    def background_color
-        if devise_controller?
-            'black'
-        else
-            'black'
-        end
-    end
 end

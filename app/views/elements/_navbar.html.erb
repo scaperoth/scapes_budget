@@ -7,14 +7,14 @@
 </div>
 
 <div class="uk-navbar-flip uk-visible-small">
-    <%= link_to '', '#offcanvas-menu', class: "uk-navbar-toggle", data: {uk_offcanvas:''} %>
+    <%= link_to '', '#offcanvas-menu', class: "uk-navbar-toggle", data: {uk_offcanvas:"{mode:'slide'}"} %>
 </div>
 
 <!-- /.navbar-header -->
 <div id="offcanvas-menu" class="uk-offcanvas" aria-hidden="true">
-    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip " mode="push">
+    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
         <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-              <%= render partial: 'elements/navlinks' %>
+              <%= render partial: 'elements/navlinks', locals: {mobile_nav: true} %>
         </ul>
     </div>
 

@@ -2,6 +2,7 @@ class CreateIncomes < ActiveRecord::Migration
   def change
     create_table :incomes do |t|
       t.string :name
+      t.string :category
       t.decimal :amount
       t.text :notes
       t.references :frequency, index: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215020737) do
+ActiveRecord::Schema.define(version: 20161214162806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,45 +59,8 @@ ActiveRecord::Schema.define(version: 20161215020737) do
     t.datetime "updated_at"
   end
 
+  add_index "budgets", ["frequency_id"], name: "index_budgets_on_frequency_id", using: :btree
   add_index "budgets", ["user_id"], name: "index_budgets_on_user_id", using: :btree
-
-  create_table "budgets_expenses", force: true do |t|
-    t.integer "budget_id"
-    t.integer "expense_id"
-  end
-
-  add_index "budgets_expenses", ["budget_id"], name: "index_budgets_expenses_on_budget_id", using: :btree
-  add_index "budgets_expenses", ["expense_id"], name: "index_budgets_expenses_on_expense_id", using: :btree
-
-  create_table "budgets_incomes", force: true do |t|
-    t.integer "budget_id"
-    t.integer "income_id"
-  end
-
-  add_index "budgets_incomes", ["budget_id"], name: "index_budgets_incomes_on_budget_id", using: :btree
-  add_index "budgets_incomes", ["income_id"], name: "index_budgets_incomes_on_income_id", using: :btree
-
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "categories_expenses", id: false, force: true do |t|
-    t.integer "expense_id",  null: false
-    t.integer "category_id", null: false
-  end
-
-  add_index "categories_expenses", ["category_id", "expense_id"], name: "index_categories_expenses_on_category_id_and_expense_id", using: :btree
-  add_index "categories_expenses", ["expense_id", "category_id"], name: "index_categories_expenses_on_expense_id_and_category_id", using: :btree
-
-  create_table "categories_incomes", id: false, force: true do |t|
-    t.integer "income_id",   null: false
-    t.integer "category_id", null: false
-  end
-
-  add_index "categories_incomes", ["category_id", "income_id"], name: "index_categories_incomes_on_category_id_and_income_id", using: :btree
-  add_index "categories_incomes", ["income_id", "category_id"], name: "index_categories_incomes_on_income_id_and_category_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -117,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161215020737) do
 
   create_table "expenses", force: true do |t|
     t.string   "name"
+    t.string   "category"
     t.decimal  "amount"
     t.text     "notes"
     t.integer  "frequency_id"
@@ -127,27 +91,39 @@ ActiveRecord::Schema.define(version: 20161215020737) do
   end
 
   add_index "expenses", ["budget_id"], name: "index_expenses_on_budget_id", using: :btree
+  add_index "expenses", ["frequency_id"], name: "index_expenses_on_frequency_id", using: :btree
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
 
   create_table "frequencies", force: true do |t|
     t.string   "name"
     t.integer  "weight"
+    t.integer  "income_id"
+    t.integer  "expense_id"
+    t.integer  "budget_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "frequencies", ["budget_id"], name: "index_frequencies_on_budget_id", using: :btree
+  add_index "frequencies", ["expense_id"], name: "index_frequencies_on_expense_id", using: :btree
+  add_index "frequencies", ["income_id"], name: "index_frequencies_on_income_id", using: :btree
+
   create_table "incomes", force: true do |t|
     t.string   "name"
+    t.string   "category"
     t.decimal  "amount"
     t.text     "notes"
+    t.integer  "frequency_id"
     t.integer  "budget_id"
     t.integer  "user_id"
-    t.integer  "frequency_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "incomes", ["budget_id"], name: "index_incomes_on_budget_id", using: :btree
+  add_index "incomes", ["category_id"], name: "index_incomes_on_category_id", using: :btree
+  add_index "incomes", ["frequency_id"], name: "index_incomes_on_frequency_id", using: :btree
   add_index "incomes", ["user_id"], name: "index_incomes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

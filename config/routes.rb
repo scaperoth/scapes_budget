@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
-  resources :categories_expenses
-
-  resources :categories_incomes
 
   get 'pages/index'
 
-
+  
+  resources :incomes do
+    get :autocomplete_income_category, :on => :collection
+  end
+  
+  resources :expenses do
+    get :autocomplete_expense_category, :on => :collection
+  end
+  
   resources :budgets, shallow: true do
       resources :expenses
       resources :incomes
   end
+  
+  
+  resources :frequencies
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
   devise_for :admin_users, ActiveAdmin::Devise.config

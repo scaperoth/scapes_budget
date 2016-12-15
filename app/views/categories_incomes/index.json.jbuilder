@@ -1,1 +1,0 @@
-json.array! @categories_incomes, partial: 'categories_incomes/categories_income', as: :categories_income

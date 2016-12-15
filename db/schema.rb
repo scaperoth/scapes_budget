@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214162806) do
+ActiveRecord::Schema.define(version: 20161215020737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161214162806) do
   create_table "budgets", force: true do |t|
     t.string   "name"
     t.decimal  "planned_savings"
+    t.boolean  "active"
     t.integer  "user_id"
     t.integer  "frequency_id"
     t.datetime "created_at"
@@ -75,6 +76,28 @@ ActiveRecord::Schema.define(version: 20161214162806) do
 
   add_index "budgets_incomes", ["budget_id"], name: "index_budgets_incomes_on_budget_id", using: :btree
   add_index "budgets_incomes", ["income_id"], name: "index_budgets_incomes_on_income_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_expenses", id: false, force: true do |t|
+    t.integer "expense_id",  null: false
+    t.integer "category_id", null: false
+  end
+
+  add_index "categories_expenses", ["category_id", "expense_id"], name: "index_categories_expenses_on_category_id_and_expense_id", using: :btree
+  add_index "categories_expenses", ["expense_id", "category_id"], name: "index_categories_expenses_on_expense_id_and_category_id", using: :btree
+
+  create_table "categories_incomes", id: false, force: true do |t|
+    t.integer "income_id",   null: false
+    t.integer "category_id", null: false
+  end
+
+  add_index "categories_incomes", ["category_id", "income_id"], name: "index_categories_incomes_on_category_id_and_income_id", using: :btree
+  add_index "categories_incomes", ["income_id", "category_id"], name: "index_categories_incomes_on_income_id_and_category_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -108,6 +131,7 @@ ActiveRecord::Schema.define(version: 20161214162806) do
 
   create_table "frequencies", force: true do |t|
     t.string   "name"
+    t.integer  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

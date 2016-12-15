@@ -93,7 +93,7 @@ section {
 }
 /* BACKGROUND */
 .full-bg {
-    margin-top: -82px;
+    margin-top: -80px;
     height: 100vh;
     padding: 0;
     z-index: 1;
@@ -397,7 +397,7 @@ section {
                 font-size: 0.5em;
                 letter-spacing: 5px;
                 color: rgba($white,0.5);
-                text-shadow: 0 0 50px $brand-tertiary;
+                text-shadow: 0 0 35px $brand-tertiary;
             }
         }
     }

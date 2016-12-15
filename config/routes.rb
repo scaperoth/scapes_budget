@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :categories_expenses
+
+  resources :categories_incomes
+
   get 'pages/index'
 
 

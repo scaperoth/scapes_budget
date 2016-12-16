@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
 //= require uikit.min
+//= require components/sticky
 //= require_tree .

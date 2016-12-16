@@ -6,10 +6,10 @@
 <table class="uk-table uk-table-striped">
     <thead>
         <tr>
-            <th>ID</th>
             <th><%= model_class.human_attribute_name(:name) %></th>
             <th><%= model_class.human_attribute_name(:planned_savings) %></th>
             <th>Savings Frequency</th>
+            <th><%= model_class.human_attribute_name(:active) %></th>
             <th><%= model_class.human_attribute_name(:created_at) %></th>
             <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
@@ -17,10 +17,10 @@
     <tbody>
         <% @budgets.each do |budget| %>
         <tr>
-            <td><%= budget.id %></td>
             <td><%= budget.name %></td>
             <td><%= budget.planned_savings %></td>
             <td><%= budget.frequency.name.capitalize %> </td>
+            <td><%= budget.active %></td>
             <td><%=l budget.created_at, format: :long %></td>
             <td>
                 <%= link_to budget_path(budget), :class => 'uk-icon-button uk-icon-pencil uk-text-primary', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

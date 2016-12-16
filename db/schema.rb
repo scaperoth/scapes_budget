@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20161214162806) do
     t.string   "category"
     t.decimal  "amount"
     t.text     "notes"
+    t.date     "date"
     t.integer  "frequency_id"
     t.integer  "budget_id"
     t.integer  "user_id"

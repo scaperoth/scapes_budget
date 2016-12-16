@@ -19,23 +19,13 @@
 </div>
 
 </li>
-<li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+<li class="<%= active_class(edit_user_registration_path) %>">
+<%= link_to dashboard_path do %>
 
-<%= link_to 'javascript:void(0);' do %>
 <% if !mobile_nav %>
-<i title="Configuration" class="fa fa-gears fa-fw"></i>
-<% else %>Configuration<% end %>
+<i title="Dashboard" class="fa fa-dashboard fa-fw"></i> Dashboard
+<% else %>Dashboard<% end %>
 <% end %>
-
-<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
-    <ul class="uk-nav uk-nav-navbar">
-
-        <li>
-            <%= link_to "Frequency Options", frequencies_path %>
-        </li>
-    </ul>
-</div>
-
 </li>
 <li class="<%= active_class(edit_user_registration_path) %>">
 <%= link_to edit_user_registration_path do %>

@@ -8,7 +8,8 @@
         <tr>
             <th><%= model_class.human_attribute_name(:name) %></th>
             <th><%= model_class.human_attribute_name(:planned_savings) %></th>
-            <th>Savings Frequency</th>
+            <th><%= model_class.human_attribute_name(:start_date) %></th>
+            <th><%= model_class.human_attribute_name(:end_date) %></th>
             <th><%= model_class.human_attribute_name(:active) %></th>
             <th><%= model_class.human_attribute_name(:created_at) %></th>
             <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -19,7 +20,8 @@
         <tr>
             <td><%= budget.name %></td>
             <td><%= budget.planned_savings %></td>
-            <td><%= budget.frequency.name.capitalize %> </td>
+            <td><%= budget.start_date %> </td>
+            <td><%= budget.end_date %> </td>
             <td><%= budget.active %></td>
             <td><%=l budget.created_at, format: :long %></td>
             <td>

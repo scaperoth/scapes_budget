@@ -45,21 +45,21 @@
                 </div>
             <% else %>
                 <div class="uk-width-small-1-1 uk-container-center">
-                    <% if controller.controller_name != 'pages' %>
+                    <% if controller.controller_name == 'pages' %>
+                    <%= render partial: 'elements/banner' %>
+                <% else %>
                     <div class="small-banner uk-cover-background uk-width-viewport" style="position:relative;height:385px; background-image: url(/assets/<%= background_image %>);">
                         <div class="transparent-black-5 uk-width-viewport uk-width-viewport inner-overlay" style="position:absolute; top:0;height:100%; width:100%;">
-                          <div class="uk-width-8-10 uk-container-center ">
-                            <div class="page-header">
-                                <h1><%= yield :head %></h1>
+                            <div class="uk-width-8-10 uk-container-center ">
+                                <div class="page-header">
+                                    <h1><%= yield :head %></h1>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
                     <div class="uk-width-small-8-10 uk-container-center">
                         <%= yield %>
                     </div>
-                <% else %>
-                    <%= yield %>
 
                     <% end %>
                 </div>

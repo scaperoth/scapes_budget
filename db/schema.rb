@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 20161214162806) do
   create_table "budgets", force: true do |t|
     t.string   "name"
     t.decimal  "planned_savings"
+    t.date     "start_date"
+    t.date     "end_date"
     t.boolean  "active"
     t.integer  "user_id"
-    t.integer  "frequency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "budgets", ["frequency_id"], name: "index_budgets_on_frequency_id", using: :btree
   add_index "budgets", ["user_id"], name: "index_budgets_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|

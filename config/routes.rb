@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'pages/index'
-
+  
+  get 'dashboard' => 'dashboard#index', as: :dashboard
   
   resources :incomes do
     get :autocomplete_income_category, :on => :collection

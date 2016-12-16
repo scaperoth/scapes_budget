@@ -1,5 +1,4 @@
 class Frequency < ActiveRecord::Base
-  belongs_to :budget
   belongs_to :income
   belongs_to :expense
 

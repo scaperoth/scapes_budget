@@ -45,9 +45,9 @@ h2,
 h3,
 h4 {
     font-family: $header-font, $header-font-fallback;
-    
+
     a {
-      font-family: $header-font, $header-font-fallback;
+        font-family: $header-font, $header-font-fallback;
     }
 }
 //
@@ -84,13 +84,13 @@ h4 {
     }
 }
 
-.line-break{
-  margin: 30px 0;
+.line-break {
+    margin: 30px 0;
 }
-
 /* LAYOUTS */
 section {
-    &.content-section, &.page-section {
+    &.content-section,
+    &.page-section {
         min-height: 200px;
         padding: 20px 0;
     }
@@ -122,15 +122,18 @@ section {
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
-    &.uk-active{
+
+    &.uk-active {
         background: rgba(20,20,20,0.9);
-        padding:0;        
-        .uk-navbar-brand{
-          padding:0;
-          font-size: 1.1em!important;
+        padding: 0;
+
+        .uk-navbar-brand {
+            padding: 0;
+            font-size: 1.1em!important;
         }
-        .uk-navbar-nav > li > a{
-          font-size:1.1em!important;
+
+        .uk-navbar-nav > li > a {
+            font-size: 1.1em!important;
         }
     }
 }
@@ -179,7 +182,6 @@ section {
     text-transform: uppercase;
     letter-spacing: 6px;
     font-size: 1.2em;
-    padding-top: 10px;
 
     &:hover {
         color: $brand-primary;
@@ -252,17 +254,17 @@ section {
     background-repeat: no-repeat;
 }
 
-.dashboard-header{
-  padding-top:40px;
-  padding-bottom:30px;
-  font-size:3em;
+.dashboard-header {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    font-size: 3em;
 }
-
 //
 /* FORM STYLES */
-div[role="status"]{
-  display:none;
+div[role="status"] {
+    display: none;
 }
+
 .resource-show {
     > * {
         font-size: 1.5em;
@@ -301,10 +303,10 @@ div[role="status"]{
         float: left;
     }
 
+    .checkbox label input,
     input,
     select,
-    textarea,
-    .checkbox label input {
+    textarea {
         float: right;
         font-size: 1.2em;
         text-align: center;
@@ -320,8 +322,8 @@ div[role="status"]{
         clear: both;
     }
 
-    .checkbox label{
-      width: 100%;
+    .checkbox label {
+        width: 100%;
     }
 
     .submit-row {
@@ -397,28 +399,26 @@ div[role="status"]{
     }
 }
 
-.form-group.has-error{
-  input, div label input{
-    box-shadow: 0 0 0 1px red;
-  }
-  
-  span.help-block{
-    color: red;
-  }
-}
+.form-group.has-error {
+    div label input,
+    input {
+        box-shadow: 0 0 0 1px red;
+    }
 
+    span.help-block {
+        color: red;
+    }
+}
 /* TABLE STYLES */
 .uk-table {
     font-size: 1.5em;
 }
-
 /* DASHBOARD STYLES */
-.dashboard{
-  h2{
-    font-size:2rem;
-  }
+.dashboard {
+    h2 {
+        font-size: 2rem;
+    }
 }
-
 @media (min-width:398px) {
     .uk-navbar-brand {
         font-size: 2em;

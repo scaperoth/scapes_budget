@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
   before_action :set_budget
   
   def index
+    
   end
   
   private

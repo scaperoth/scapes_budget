@@ -60,6 +60,9 @@ gem 'raphael-rails'
 gem 'rails4-autocomplete'
 gem "chartkick"
 
+# for user with plaid
+gem 'argyle'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'

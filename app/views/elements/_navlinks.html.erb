@@ -1,6 +1,7 @@
 <% mobile_nav ||= false %>
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
+
 <li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
     <%= link_to 'Budgets', 'javascript:void(0);' %>
 

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
   get 'pages/index'
   
   get 'dashboard' => 'dashboard#index', as: :dashboard
+  post 'plaid' => 'plaid_callback#index', as: :plaid_callback
   
   resources :incomes do
     get :autocomplete_income_category, :on => :collection

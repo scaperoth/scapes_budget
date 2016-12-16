@@ -13,3 +13,5 @@ frequencies.each_with_index do |freq, idx|
   new_frequency = Frequency.new(name: freq, weight: idx)
   new_frequency.save
 end
+
+Budget.new(name: "Matt's 2017", planned_savings: 10000, frequency_id: 5)

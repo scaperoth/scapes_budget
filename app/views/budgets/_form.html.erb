@@ -1,6 +1,9 @@
 <%= simple_form_for @budget, :html => { :class => 'uk-form-vertical form-model form-budget page-form-centered' } do |f| %>
 
 <div class="uk-form-row">
+    <%= f.input :active, type: 'checkbox', hint: "The active budgets will appear on the home page.", :class => 'text-field form-control' %>
+</div>
+<div class="uk-form-row">
     <%= f.input :name, :class => 'text-field form-control' %>
 </div>
 <div class="uk-form-row">

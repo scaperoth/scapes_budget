@@ -325,6 +325,7 @@ DEPENDENCIES
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   morrisjs-rails
   omniauth
   omniauth-facebook

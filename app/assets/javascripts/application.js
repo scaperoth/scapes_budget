@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require uikit.min
 //= require turbolinks
+//= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
+//= require uikit.min
 //= require_tree .

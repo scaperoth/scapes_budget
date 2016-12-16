@@ -5,10 +5,11 @@
 <table class="uk-table uk-table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th><%= model_class.human_attribute_name(:frequency) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
       <th><%= model_class.human_attribute_name(:notes) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,10 +18,17 @@
   <tbody>
     <% @incomes.each do |income| %>
       <tr>
-        <td><%= income.id %></td>
         <td><%= income.frequency.name.capitalize %></td>
         <td><%= income.name %></td>
         <td><%= income.amount %></td>
+        <td><%= income.category %></td>
+        <td>
+        <% if income.frequency == Frequency.where(name: 'one-time').first %>
+          <%= income.date %>
+          <% else %>
+          N/A
+        <% end %>
+        </td>
         <td><%= income.notes %></td>
         <td><%=l income.created_at, format: :long %></td>
         <td>

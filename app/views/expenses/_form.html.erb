@@ -11,10 +11,13 @@
 
 </div>
 <div class="uk-form-row ">
+    <%= f.input :amount, :class => 'text-field form-control' %>
+</div>
+<div class="uk-form-row ">
     <%= f.input :category, :url => autocomplete_expense_category_expenses_path, :as => :autocomplete %>
 </div>
 <div class="uk-form-row ">
-    <%= f.input :amount, :class => 'text-field form-control' %>
+    <%= f.input :date %>
 </div>
 <div class="uk-form-row ">
     <%= f.input :notes, :class => 'text-field form-control' %>

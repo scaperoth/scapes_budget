@@ -80,10 +80,6 @@ h4 {
     }
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #555 inset !important;
-    -webkit-text-fill-color: lighten($brand-primary, 20%);
-}
 /* LAYOUTS */
 section {
     &.page-section {
@@ -211,7 +207,6 @@ section {
     position: absolute;
     margin: 0 auto;
     top: 50%;
-    width: 100vw;
 
     h1 {
         color: rgba(#fff, .6);
@@ -235,6 +230,9 @@ section {
 }
 //
 /* FORM STYLES */
+div[role="status"]{
+  display:none;
+}
 .resource-show {
     > * {
         font-size: 1.5em;
@@ -275,7 +273,8 @@ section {
 
     input,
     select,
-    textarea {
+    textarea,
+    .checkbox label input {
         float: right;
         font-size: 1.2em;
         text-align: center;
@@ -289,6 +288,10 @@ section {
 
     p {
         clear: both;
+    }
+
+    .checkbox label{
+      width: 100%;
     }
 
     .submit-row {

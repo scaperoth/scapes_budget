@@ -5,6 +5,7 @@ class CreateExpenses < ActiveRecord::Migration
       t.string :category
       t.decimal :amount
       t.text :notes
+      t.date :date
       t.references :frequency, index: true
       t.references :budget, index: true
       t.references :user, index: true

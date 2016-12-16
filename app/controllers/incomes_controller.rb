@@ -1,4 +1,5 @@
 class IncomesController < ApplicationController
+  autocomplete :income, :category
 
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
@@ -73,7 +74,7 @@ class IncomesController < ApplicationController
     def set_income
       @income = Income.find(params[:id])
     end
-    
+
     # set budget for specific expense
     def set_budget
         @budget = Budget.find(params[:budget_id]) unless params[:budget_id].nil?
@@ -82,6 +83,6 @@ class IncomesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def income_params
-      params.require(:income).permit(:frequency_id, :name, :amount, :notes, :budget_id, :user_id)
+      params.require(:income).permit(:frequency_id, :name, :category, :date, :amount, :notes, :budget_id, :user_id)
     end
 end

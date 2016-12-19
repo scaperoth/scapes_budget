@@ -129,6 +129,8 @@ ActiveRecord::Schema.define(version: 20161214162806) do
   add_index "incomes", ["user_id"], name: "index_incomes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
+    t.string   "fname",                  default: "", null: false
+    t.string   "lname",                  default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -144,7 +146,6 @@ ActiveRecord::Schema.define(version: 20161214162806) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
     t.string   "username"
   end
 

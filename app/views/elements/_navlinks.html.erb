@@ -2,8 +2,26 @@
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
 
-<li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
-    <%= link_to 'Budgets', 'javascript:void(0);' %>
+<% if mobile_nav %> 
+<li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>">
+    <%= link_to 'Budgets', '#' %>
+
+    <ul class="uk-nav-sub">
+    <li>
+        <%= link_to "All Budgets", budgets_path %>
+    </li>
+    <li class="uk-nav-divider"></li>
+    <% Budget.all.each do |budget| %>
+    <li>
+        <%= link_to budget.name, edit_budget_path(budget) %>
+    </li>
+    <% end %>
+</ul>
+
+</li>
+<% else %>
+<li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>" data-uk-dropdown="{mode:'hover'}" aria-haspopup="true" aria-expanded="false">
+    <%= link_to 'Budgets', '' %>
 
     <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
         <ul class="uk-nav uk-nav-navbar">
@@ -20,6 +38,7 @@
 </div>
 
 </li>
+<% end %>
 <li class="<%= active_class(edit_user_registration_path) %>">
 <%= link_to dashboard_path do %>
 

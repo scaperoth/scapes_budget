@@ -5,7 +5,15 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, except: [:login, :signup, :signout]
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
+  
+  def redirect_back_or_default(default = root_url)
+    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back
+    else
+      redirect_to default
+    end
+  end
+  
   protected
 
   #->Prelang (user_login:devise)

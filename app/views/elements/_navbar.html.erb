@@ -1,27 +1,20 @@
-
 <%= link_to "Scapes Budget", root_path, class: "uk-navbar-brand" %>
-<% if user_signed_in? %>
-<div class="uk-navbar-content uk-margin-remove">
-<%= plaid_link name: 'Matthew Scaperoth', action: plaid_callback_path%> 
-</div>
-<% end %>
+
 <div class="uk-navbar-flip">
     <ul class="uk-navbar-nav uk-hidden-small">
         <%= render partial: 'elements/navlinks' %>
     </ul>
 </div>
-
 <div class="uk-navbar-flip uk-visible-small">
     <%= link_to '', '#offcanvas-menu', class: "uk-navbar-toggle", data: {uk_offcanvas:"{mode:'slide'}"} %>
 </div>
-
 <!-- /.navbar-header -->
 <div id="offcanvas-menu" class="uk-offcanvas" aria-hidden="true">
-    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
-        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip uk-panel uk-panel-box">
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-side uk-nav-parent-icon" data-uk-nav>
             <%= render partial: 'elements/navlinks', locals: {mobile_nav: true} %>
         </ul>
     </div>
-
 </div>
+
 <!-- /.navbar-top-links -->

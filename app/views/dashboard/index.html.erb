@@ -9,65 +9,154 @@ Dashboard
     </h2>
     <% end %>
     <% @budgets.each do |budget| %>
-    <%  
-          @budget = budget
-          @incomes = Income.where(budget: @budget) 
-          @expenses = Expense.where(budget: @budget) 
-          %>
 
     <div class="uk-width-small-1-1">
-        <h1 class="dashboard-header">
-            Budget: <%= @budget.name %>
-        </h1>
-    </div>
-    <section class="page-section" style="min-height:100px;">
-        <div class="uk-width-small-8-10 uk-container-center uk-grid">
-            <div class="uk-width-small-1-1">
-                <div class="uk-width-small-1-3 uk-container-center uk-text-center">
-                    <h2 >
-                        Total Daily Allowance:
-                    </h2>
-                    <p>
-                        to reach the savings goal of
-                        <%= number_to_currency(@budget.planned_savings) %></p>
+        <div class="dashboard-header">
+            <h1>
+                Budget:
+                <%= budget.name %>
+
+            </h1>
+            <h2 class="uk-text-muted uk-margin-top-remove">
+                <%= date_format(budget.start_date) %>
+                through
+                <%= date_format(budget.end_date) %>
+                (<%= budget.days_remaining %>
+                days)<br/>
+                with a goal of
+                <%= number_to_currency(budget.planned_savings) %>
+            </h2>
+        </div>
+        <section class="page-section" style="min-height:100px;">
+            <div class="uk-grid  uk-grid-divider uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
+                <div class="uk-width-9-10 uk-width-small-1-2 uk-width-medium-1-3 budget breakdown-section uk-text-center uk-container-center">
+                    <div class="uk-panel  uk-panel-box">
+                        <h2 class="uk-width-1-1 uk-panel-title">
+                            Budget Breakdown
+                        </h2>
+                        <div class="uk-grid uk-width-1-1 daily breakdown-item">
+                            <div class="uk-width-1-2 uk-text-left">
+                                <h3>Daily Income:</h3>
+                            </div>
+                            <div class="uk-width-1-2 uk-text-right">
+                                <h3><%= number_to_currency(budget.daily_income) %></h3>
+                            </div>
+                        </div>
+                        <div class="uk-grid uk-width-1-1 daily breakdown-item">
+                            <div class="uk-width-1-2 uk-text-left">
+                                <h3>Daily Expenses:</h3>
+                            </div>
+                            <div class="uk-width-1-2 uk-text-right">
+                                <h3><%= number_to_currency(budget.daily_expenses) %>
+                                    (<%= expense_percentage(budget) %>
+                                    of income)</h3>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <div class="uk-width-small-1-1">
-                <div class="uk-width-small-1-2 uk-container-center">
-                    <hr class="line-break"/>
+                <div class="uk-width-9-10 uk-width-small-1-2 uk-width-medium-1-3 spending breakdown-section uk-text-center uk-container-center">
+                    <div class="uk-panel  uk-panel-box">
+                        <h2>Allowed spending</h2>
+                        <div class="uk-grid uk-width-1-1">
+                            <div class="uk-width-1-2">
+                                <h3>Daily</h3>
+                            </div>
+                            <div class="uk-width-1-2">
+                              <%= content_tag "h3", style: budget.weekly_allowance < 0 ? 'color:red' : '' do %> <%= number_to_currency(budget.daily_allowance) %>
+                              <% end %>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-width-1-1">
+                        <div class="uk-width-1-2">
+                            <h3>Weekly</h3>
+                        </div>
+                        <div class="uk-width-1-2">
+                          <%= content_tag "h3", style: budget.weekly_allowance < 0 ? 'color:red' : '' do %> <%= number_to_currency(budget.weekly_allowance) %>
+                          <% end %>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="page-section">
-            <div class="uk-width-small-1-6 uk-vertical-align">
-                <h2 class="uk-vertical-align-middle">
-                    Quick Look
-                </h2>
-            </div>
-            <div class="uk-width-small-1-4 uk-grid">
-                <div class="uk-width-small-1-2  uk-text-center">
-                  
-                  <% if @expenses.empty? %>
-                  <h3> 
-                    <%= link_to "Add some expenses", edit_budget_path(@budget) %> to see the breakdown 
-                  </h3>
-                  <% else %> 
-                    <%= pie_chart @expenses.group(:category).count, legend: false, height: "100px" %>
-                    <p>Expense Categories</p>
-                    <% end %>
-                </div>
-                <div class="uk-width-small-1-2  uk-text-center">
-                  <% if @incomes.empty? %>
-                  <h3> 
-                    <%= link_to "Add some incomes", edit_budget_path(@budget) %> to see the breakdown 
-                  </h3>
-                  <% else %> 
-                    <%= pie_chart @incomes.group(:category).count, legend: false, height: "100px" %>
-                    <p>Income Categories</p>
-                    <% end %>
+                <div class="uk-width-1-1">
+                    <p>If these numbers are red, it means that you may need to generate more income to read your savings goals.</p>
                 </div>
             </div>
         </div>
-    </section>
-    <% end %>
+        <div class="uk-width-9-10 uk-width-small-1-1 uk-width-medium-1-3 savings breakdown-section  uk-text-center uk-container-center">
+            <div class="uk-panel  uk-panel-box">
+                <h2>Required Savings
+                <p class="uk-text-muted"><small>To hit goal of <%= number_to_currency(budget.planned_savings) %></small></p></h2>
+                <div class="uk-grid uk-width-1-1">
+                    <div class="uk-width-1-2">
+                        <h3>Daily</h3>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <h3><%= number_to_currency(budget.required_savings('daily')) %></h3>
+                    </div>
+                </div>
+                <div class="uk-grid uk-width-1-1">
+                    <div class="uk-width-1-2">
+                        <h3>Weekly</h3>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <h3><%= number_to_currency(budget.required_savings('weekly')) %></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="uk-grid-divider"/>
+<section class="page-section">
+    <div class="uk-grid uk-grid-divider">
+        <div class="uk-width-1-1 uk-width-medium-1-2 uk-text-center uk-container-center">
+            <h3>Income Categories</h3>
+            <%= pie_chart budget.incomes.group(:category).count, legend: false %>
+        </div>
+        <div class="uk-width-1-1 uk-width-medium-1-2 uk-text-center uk-container-center">
+            <h3>Expense Categories</h3>
+            <%= pie_chart budget.expenses.group(:category).count, legend: false %>
+        </div>
+    </div>
+</section>
+<hr class="uk-grid-divider"/>
+<section class="page-section">
+    <div class="uk-grid">
+        <div class="uk-width-9-10 uk-width-small-1-1 uk-text-center uk-container-center">
+            <div class="uk-panel  uk-panel-box">
+                <div class="uk-grid">
+                    <div class="uk-width-1-1 uk-width-medium-1-4 uk-vertical-align">
+                        <h2 class="uk-vertical-align-middle">Savings Potential:</h2>
+                    </div>
+                    <div class="uk-grid uk-width-1-3 uk-width-medium-1-4">
+                        <div class="uk-width-1-1">
+                            <h3>Daily</h3>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <h3><%= budget.savings_potential %></h3>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-3 uk-width-medium-1-4">
+                        <div class="uk-width-1-1">
+                            <h3>Weekly</h3>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <h3><%= budget.savings_potential('weekly') %></h3>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-3 uk-width-medium-1-4">
+                        <div class="uk-width-1-1">
+                            <h3>Monthly</h3>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <h3><%= budget.savings_potential('monthly') %></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<% end %>
 </div>

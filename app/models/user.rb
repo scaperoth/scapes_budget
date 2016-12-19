@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-
+  
+  def full_name
+    self.fname + ' '+ self.lname
+  end
+  
   #->Prelang (user_login/devise)
   has_many :budgets
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

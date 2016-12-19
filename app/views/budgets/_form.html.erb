@@ -19,6 +19,6 @@
 <div class="uk-form-row submit-row">
     <%= f.submit nil, class: "uk-button uk-button-success" %>
     <%= link_to 'Back',
-                  @budget.id.present? ? budget_path(@budget) : budgets_path, :class => 'uk-button uk-button-default' %>
+                  @budget.id.present? ? edit_budget_path(@budget) : budgets_path, :class => 'uk-button uk-button-default' %>
 </div>
 <% end %>

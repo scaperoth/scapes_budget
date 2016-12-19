@@ -13,7 +13,7 @@ module ArgyleHelper
   end
 
   def plaid_link_form(id, action)
-    form_tag action, method: 'POST', id: id do end
+    form_tag action, method: 'POST', id: id, class:"uk-form uk-display-inline-block" do end
   end
 
   def plaid_link_script(id, name, product, env, options)

@@ -83,5 +83,6 @@ Rails.application.configure do
   #->Prelang
   GA.tracker = ""
 
+  config.file_watcher = ActiveSupport::FileUpdateChecker
 end
 

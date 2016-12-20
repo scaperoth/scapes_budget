@@ -2,6 +2,8 @@
 <% content_for :head do %>
 <%= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class%>
 <% end %>
-<div class="uk-width-1-3 uk-container-center ">
-<%= render :partial => 'form' %>
+<section class="page-section">
+    <div class="uk-width-1-1 uk-width-large-1-2 uk-width-xlarge-1-3 uk-container-center ">
+        <%= render :partial => 'form' %>
+    </div>
 </div>

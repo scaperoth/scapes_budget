@@ -7,6 +7,7 @@ gem 'rails', '4.1.4'
 gem 'pg'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 3.2'  
@@ -56,6 +57,11 @@ gem 'validates_formatting_of'
 gem 'flot-rails', :git => "https://github.com/Kjarrigan/flot-rails.git"
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem 'rails4-autocomplete'
+gem "chartkick"
+
+# for user with plaid
+gem 'argyle'
 
 group :development, :test do
   gem 'dotenv-rails'

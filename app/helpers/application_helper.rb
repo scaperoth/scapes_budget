@@ -28,5 +28,12 @@ module ApplicationHelper
     def glyph(icon)
       content_tag :i, nil, class: "fa fa-fw fa-"+icon 
     end
-
+    
+    def plaid_user
+      if user_session["plaid_user"].present? 
+        return user_session["plaid_user"]
+      else 
+        return nil
+      end
+    end 
 end

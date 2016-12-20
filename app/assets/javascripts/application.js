@@ -10,8 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery  
 //= require jquery_ujs
-//= require uikit.min
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
+//= require jquery-ui/widgets/autocomplete
+//= require autocomplete-rails
+//= require uikit.min
+//= require components/sticky
 //= require_tree .

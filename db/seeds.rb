@@ -7,9 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-frequencies = %w(daily weekly monthly yearly)
+User.create!(fname: "Matthew", lname: "Scaperoth", username: "scaperoth", email: ENV['app_user'], password: ENV['app_user_pass'], password_confirmation: ENV['app_user_pass'])
 
-frequencies.each do |f|
-  new_frequency = Frequency.new(name: f)
+frequencies = %w(one-time daily weekly bi-weekly monthly yearly)
+
+frequencies.each_with_index do |freq, idx|
+  new_frequency = Frequency.new(name: freq, weight: idx)
   new_frequency.save
 end
+

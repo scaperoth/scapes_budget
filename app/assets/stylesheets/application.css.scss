@@ -10,6 +10,7 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
+*= require jquery-ui/autocomplete
 *= require morris
 *= require style_framework
 *= require font-awesome
@@ -19,4 +20,3 @@
 */
 
 //->Prelang (ui_framework:twitter_bootstrap)
-

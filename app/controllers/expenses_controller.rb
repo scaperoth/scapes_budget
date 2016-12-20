@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+    autocomplete :expense, :category, scopes: [:unique_categories], full: true
+
     #->Prelang (scaffolding:rails/scope_to_user)
     before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
@@ -81,6 +83,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-        params.require(:expense).permit(:frequency_id, :name, :amount, :notes, :budget_id, :user_id)
+        params.require(:expense).permit(:frequency_id, :name, :amount, :category, :date, :notes, :budget_id, :user_id)
     end
 end

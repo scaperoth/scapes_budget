@@ -4,20 +4,26 @@
 <%= simple_form_for model, :html => { :class => 'uk-form-vertical form-model page-form-centered' } do |f| %>
 
 <div class="uk-form-row ">
-  <%= f.input :frequency_id, collection: Frequency.order(:id), label_method: :readable_name, value_method: :id, include_blank: false %>
+    <%= f.input :frequency_id, collection: Frequency.order(:weight), label_method: :readable_name, value_method: :id, include_blank: false %>
 </div>
 <div class="uk-form-row ">
-      <%= f.input :name %>
-    </div>
+    <%= f.input :name %>
+</div>
 <div class="uk-form-row ">
-      <%= f.input :amount %>
-    </div>
+    <%= f.input :amount %>
+</div>
 <div class="uk-form-row ">
-      <%= f.input :notes %>
-    </div>
-    <div class="uk-form-row submit-row">
-        <%= f.submit nil, class: "uk-button uk-button-success" %> 
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    <%= f.input :category, :url => autocomplete_income_category_incomes_path, :as => :autocomplete %>
+</div>
+<div class="uk-form-row ">
+    <%= f.input :date %>
+</div>
+<div class="uk-form-row ">
+    <%= f.input :notes %>
+</div>
+<div class="uk-form-row submit-row">
+    <%= f.submit nil, class: "uk-button uk-button-success" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                       path, :class => 'uk-button uk-button-danger' %>
-    </div>
+</div>
 <% end %>

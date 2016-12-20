@@ -4,10 +4,10 @@
     <%= f.input :active, type: 'checkbox', hint: "The active budget will appear on the home page.", :class => 'text-field form-control' %>
 </div>
 <div class="uk-form-row">
-    <%= f.input :name, :class => 'text-field form-control' %>
+    <%= f.input :name, placeholder: "Budget Name", :class => 'text-field form-control',label_html: {class: 'uk-hidden-small'}, input_html: {class: 'uk-width-small-1-1 uk-width-medium-1-4'} %>
 </div>
 <div class="uk-form-row">
-    <%= f.input :planned_savings, :class => 'text-field form-control' %>
+    <%= f.input :planned_savings, placeholder: "Planned Savings", :class => 'text-field form-control',label_html: {class: 'uk-hidden-small'}, input_html: {class: 'uk-width-small-1-1 uk-width-medium-1-4'} %>
 </div>
 
 <div class="uk-form-row">

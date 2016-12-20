@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: ENV['ADMIN_USER'], password: ENV['ADMIN_USER_PASS'], password_confirmation: ENV['ADMIN_USER_PASS'])
 
-User.create!(fname: "Matthew", lname: "Scaperoth", username: "scaperoth", email: ENV['app_user'], password: ENV['app_user_pass'], password_confirmation: ENV['app_user_pass'])
+#User.create!(fname: "Matthew", lname: "Scaperoth", username: "scaperoth", email: ENV['APP_USER'], password: ENV['APP_USER_PASS'], password_confirmation: ENV['APP_USER_PASS'])
 
 frequencies = %w(one-time daily weekly bi-weekly monthly yearly)
 

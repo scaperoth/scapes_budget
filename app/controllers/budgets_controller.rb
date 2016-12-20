@@ -1,10 +1,10 @@
 class BudgetsController < ApplicationController
     before_action :set_budget, only: [:show, :edit, :update, :destroy]
-    before_action :set_income_and_expense, only: [:show, :edit]
+    before_action :set_income_and_expense, only: [:show, :edit, :update]
     # GET /budgets
     # GET /budgets.json
     def index
-        @budgets = Budget.all
+        @budgets = Budget.all.where(user: current_user)
     end
 
     # GET /budgets/1
@@ -65,7 +65,7 @@ class BudgetsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_budget
-        @budget = Budget.find(params[:id])
+        @budget = Budget.where(user: current_user).find(params[:id])
     end
     
     def set_income_and_expense

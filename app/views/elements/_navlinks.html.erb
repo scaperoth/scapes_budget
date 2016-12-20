@@ -33,7 +33,7 @@
         <li class="<%= active_class budgets_path %>">
             <%= link_to "All Budgets", budgets_path %>
         </li>
-        <% Budget.all.each do |budget| %>
+        <% Budget.all.where(user: current_user).each do |budget| %>
         <li class="<%= active_class edit_budget_path(budget) %>">
             <%= link_to budget.name, edit_budget_path(budget) %>
         </li>

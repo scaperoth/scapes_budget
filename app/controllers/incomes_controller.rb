@@ -10,7 +10,7 @@ class IncomesController < ApplicationController
   # GET /incomes
   # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = Income.all.where(user: current_user)
   end
 
   # GET /incomes/1
@@ -72,13 +72,13 @@ class IncomesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_income
-      @income = Income.find(params[:id])
+      @income = Income.where(user: current_user).find(params[:id])
     end
 
     # set budget for specific expense
     def set_budget
-        @budget = Budget.find(params[:budget_id]) unless params[:budget_id].nil?
-        @budget = Budget.find(@income.budget_id) unless @income.nil?
+        @budget = Budget.where(user: current_user).find(params[:budget_id]) unless params[:budget_id].nil?
+        @budget = Budget.where(user: current_user).find(@income.budget_id) unless @income.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -3,19 +3,19 @@
 <% if user_signed_in? %>
 
 <% if mobile_nav %> 
-<li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>">
+<li class="uk-parent ">
     <%= link_to 'Budgets', '#' %>
 
     <ul class="uk-nav-sub">
-    <li>
+    <li class="<%= active_class new_budget_path %>">
         <%= link_to "New Budget", new_budget_path %>
     </li>
     <li class="uk-nav-divider"></li>
-    <li>
+    <li class="<%= active_class budgets_path %>">
         <%= link_to "All Budgets", budgets_path %>
     </li>
     <% Budget.all.each do |budget| %>
-    <li>
+    <li class="<%= active_class edit_budget_path(budget) %>">
         <%= link_to budget.name, edit_budget_path(budget) %>
     </li>
     <% end %>
@@ -30,17 +30,17 @@
         <ul class="uk-nav uk-nav-navbar">
           
         <li class="uk-nav-header">My Budgets</li>
-        <li>
+        <li class="<%= active_class budgets_path %>">
             <%= link_to "All Budgets", budgets_path %>
         </li>
-            <% Budget.all.each do |budget| %>
-        <li >
+        <% Budget.all.each do |budget| %>
+        <li class="<%= active_class edit_budget_path(budget) %>">
             <%= link_to budget.name, edit_budget_path(budget) %>
         </li>
         <% end %>
         
         <li class="uk-nav-divider"></li>
-        <li>
+        <li class="<%= active_class new_budget_path %>">
             <%= link_to "New Budget", new_budget_path %>
         </li>
     </ul>
@@ -48,7 +48,7 @@
 
 </li>
 <% end %>
-<li class="<%= active_class(edit_user_registration_path) %>">
+<li class="<%= active_class(dashboard_path) %>">
 <%= link_to dashboard_path do %>
 
 <% if !mobile_nav %>

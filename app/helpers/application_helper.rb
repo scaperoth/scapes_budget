@@ -22,7 +22,7 @@ module ApplicationHelper
     end
 
     def background_image
-        'bike.jpg'
+        'leaf_maze.jpg'
     end
     
     def plaid_user

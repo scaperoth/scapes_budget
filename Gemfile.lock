@@ -214,6 +214,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (2.0.4)
+    puma (3.4.0)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -343,6 +344,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   pry-rails
+  puma
   rails (= 4.1.4)
   rails4-autocomplete
   rails_12factor

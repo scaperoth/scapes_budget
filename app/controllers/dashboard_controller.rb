@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
   
   def set_budget
     if user_signed_in? 
-      @budgets = Budget.where(user_id: current_user)
+      @budgets = Budget.where(user_id: current_user).order(:id)
     end 
   end
 end

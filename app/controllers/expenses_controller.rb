@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
     # GET /expenses
     # GET /expenses.json
     def index
-        @expenses = Expense.all
+        @expenses = Expense.all.where(user: current_user)
     end
 
     # GET /expenses/1
@@ -72,7 +72,7 @@ class ExpensesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
-        @expense = Expense.find(params[:id])
+        @expense = Expense.where(user: current_user).find(params[:id])
     end
 
     # set budget for specific expense

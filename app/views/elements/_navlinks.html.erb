@@ -8,9 +8,12 @@
 
     <ul class="uk-nav-sub">
     <li>
-        <%= link_to "All Budgets", budgets_path %>
+        <%= link_to "New Budget", new_budget_path %>
     </li>
     <li class="uk-nav-divider"></li>
+    <li>
+        <%= link_to "All Budgets", budgets_path %>
+    </li>
     <% Budget.all.each do |budget| %>
     <li>
         <%= link_to budget.name, edit_budget_path(budget) %>
@@ -25,15 +28,21 @@
 
     <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
         <ul class="uk-nav uk-nav-navbar">
+          
+        <li class="uk-nav-header">My Budgets</li>
         <li>
             <%= link_to "All Budgets", budgets_path %>
         </li>
-        <li class="uk-nav-divider"></li>
             <% Budget.all.each do |budget| %>
-        <li>
+        <li >
             <%= link_to budget.name, edit_budget_path(budget) %>
         </li>
         <% end %>
+        
+        <li class="uk-nav-divider"></li>
+        <li>
+            <%= link_to "New Budget", new_budget_path %>
+        </li>
     </ul>
 </div>
 

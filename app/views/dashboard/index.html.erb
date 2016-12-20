@@ -8,8 +8,12 @@ Dashboard
         <%= link_to "making one now", new_budget_path %>
     </h2>
     <% end %>
-    <% @budgets.each do |budget| %>
-
+    
+    <% @budgets.each.with_index do |budget, index| %>
+    
+    <% if index > 0 %> 
+    <hr class="uk-grid-divider"/> 
+    <% end %>
     <div class="uk-width-small-1-1">
         <div class="dashboard-header">
             <h1>
@@ -27,6 +31,10 @@ Dashboard
                 <%= number_to_currency(budget.planned_savings) %>
             </h2>
         </div>
+        
+        <% if budget.expenses.empty? || budget.incomes.empty? %>
+          <%= no_incomes_or_expenses_message budget %>
+        <% else %>
         <section class="page-section" style="min-height:100px;">
             <div class="uk-grid  uk-grid-divider uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
                 <div class="uk-width-9-10 uk-width-small-1-2 uk-width-medium-1-3 budget breakdown-section uk-text-center uk-container-center">
@@ -156,7 +164,7 @@ Dashboard
         </div>
     </div>
 </section>
+<% end %>
 </div>
-
 <% end %>
 </div>

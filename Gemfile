@@ -58,6 +58,10 @@ gem 'flot-rails', :git => "https://github.com/Kjarrigan/flot-rails.git"
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 gem 'rails4-autocomplete'
+gem "chartkick"
+
+# for user with plaid
+gem 'argyle'
 
 group :development, :test do
   gem 'dotenv-rails'

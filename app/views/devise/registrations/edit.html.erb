@@ -9,7 +9,13 @@ Account
     <%= f.error_notification %>
 
     <div class="uk-form-row">
-        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :fname, required: true, autofocus: true %>
+    </div>
+    <div class="uk-form-row">
+        <%= f.input :lname, required: true %>
+    </div>
+    <div class="uk-form-row">
+        <%= f.input :email, required: true %>
     </div>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>Currently waiting confirmation for:
@@ -30,10 +36,9 @@ Account
 
     <div class="uk-form-row">
         <%= f.submit "Update", class: "uk-button uk-button-success" %>
-            <%= link_to "Back", :back, class: "uk-button uk-button-default" %>
+        <%= link_to "Back", :back, class: "uk-button uk-button-default" %>
     </div>
     <% end %>
-
 
     <br/>
     <h3>Cancel my account</h3>

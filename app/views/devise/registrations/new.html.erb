@@ -2,6 +2,14 @@
 
 
 <div class="uk-form-row large-form">
+    <%= f.text_field :fname, placeholder: 'First Name', class: 'uk-width-1-1', html: {spellcheck: "false"} %>
+    <%= f.error :fname, id: 'fname_error' %>
+</div>
+<div class="uk-form-row large-form">
+    <%= f.text_field :lname, placeholder: 'Last Name', class: 'uk-width-1-1', html: {spellcheck: "false"} %>
+    <%= f.error :lname, id: 'lname_error' %>
+</div>
+<div class="uk-form-row large-form">
     <%= f.text_field :username, placeholder: 'Username', class: 'uk-width-1-1', html: {spellcheck: "false"} %>
     <%= f.error :username, id: 'username_error' %>
 </div>

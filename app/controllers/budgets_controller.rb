@@ -75,6 +75,6 @@ class BudgetsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
-        params.require(:budget).permit(:name, :planned_savings, :user_id, :frequency_id)
+        params.require(:budget).permit(:name, :planned_savings, :user_id, :active, :start_date, :end_date)
     end
 end

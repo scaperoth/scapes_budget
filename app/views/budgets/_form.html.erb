@@ -1,7 +1,7 @@
 <%= simple_form_for @budget, :html => { :class => 'uk-form-vertical form-model form-budget page-form-centered' } do |f| %>
 
 <div class="uk-form-row">
-    <%= f.input :active, type: 'checkbox', hint: "The active budgets will appear on the home page.", :class => 'text-field form-control' %>
+    <%= f.input :active, type: 'checkbox', hint: "The active budget will appear on the home page.", :class => 'text-field form-control' %>
 </div>
 <div class="uk-form-row">
     <%= f.input :name, :class => 'text-field form-control' %>
@@ -10,12 +10,15 @@
     <%= f.input :planned_savings, :class => 'text-field form-control' %>
 </div>
 
-<div class="uk-form-row ">
-    <%= f.input :frequency_id, label: "Savings Frequency", collection: Frequency.order(:weight).where.not(name: %w(one-time bi-weekly)), label_method: :readable_name, value_method: :id, include_blank: false %>
+<div class="uk-form-row">
+    <%= f.input :start_date, :class => 'text-field form-control' %>
+</div>
+<div class="uk-form-row">
+    <%= f.input :end_date, :class => 'text-field form-control' %>
 </div>
 <div class="uk-form-row submit-row">
     <%= f.submit nil, class: "uk-button uk-button-success" %>
     <%= link_to 'Back',
-                  @budget.id.present? ? budget_path(@budget) : budgets_path, :class => 'uk-button uk-button-default' %>
+                  @budget.id.present? ? edit_budget_path(@budget) : budgets_path, :class => 'uk-button uk-button-default' %>
 </div>
 <% end %>

@@ -45,18 +45,34 @@ h2,
 h3,
 h4 {
     font-family: $header-font, $header-font-fallback;
+
+    a, span {
+        font-family: $header-font, $header-font-fallback;
+    }
 }
 //
 /* MISC */
 .sb-primary-color {
-    color: $brand-primary;
-
+    background-color: $brand-primary;
+    
     &-light {
-        color: lighten($brand-primary, 13%);
+        background-color: lighten($brand-primary, 13%);
     }
 
     &-dark {
-        color: darken($brand-primary, 13%);
+        background-color: darken($brand-primary, 13%);
+    }
+    
+    &-text{
+      color: $brand-primary;
+      
+      &-light {
+          color: lighten($brand-primary, 13%);
+      }
+
+      &-dark {
+          color: darken($brand-primary, 13%);
+      }
     }
 }
 
@@ -80,8 +96,12 @@ h4 {
     }
 }
 
+.line-break {
+    margin: 30px 0;
+}
 /* LAYOUTS */
 section {
+    &.content-section,
     &.page-section {
         min-height: 200px;
         padding: 20px 0;
@@ -96,7 +116,13 @@ section {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-
+    
+    &.page-devise{
+        min-height: 632px + 80px;
+        .inner-overlay {
+          min-height:632px + 80px;
+        }
+    }
     .inner-overlay {
         height: 100vh;
         padding: 80px 4% 0;
@@ -110,6 +136,24 @@ section {
     z-index: 999;
     min-height: 40px;
     padding: 20px 0;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+
+    &.uk-active {
+        background: rgba(20,20,20,0.9);
+        padding: 0;
+
+        .uk-navbar-brand {
+            padding: 0;
+            font-size: 1.1em!important;
+        }
+
+        .uk-navbar-nav > li > a {
+            font-size: 1.1em!important;
+        }
+    }
 }
 
 .uk-navbar-nav > li > a {
@@ -156,13 +200,14 @@ section {
     text-transform: uppercase;
     letter-spacing: 6px;
     font-size: 1.2em;
-    padding-top: 10px;
 
     &:hover {
         color: $brand-primary;
     }
 }
-
+.uk-offcanvas .uk-panel{
+  margin:0;
+}
 .uk-offcanvas-bar {
     background-color: #333;
 }
@@ -210,7 +255,7 @@ section {
 
     h1 {
         color: rgba(#fff, .6);
-        font-size: 4em;
+        font-size: 10vw;
         font-weight: bold;
         text-transform: uppercase;
         -webkit-transition: all 300ms ease-in-out;
@@ -228,11 +273,18 @@ section {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.dashboard-header {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    font-size: 3em;
+}
 //
 /* FORM STYLES */
-div[role="status"]{
-  display:none;
+div[role="status"] {
+    display: none;
 }
+
 .resource-show {
     > * {
         font-size: 1.5em;
@@ -271,10 +323,10 @@ div[role="status"]{
         float: left;
     }
 
+    .checkbox label input,
     input,
     select,
-    textarea,
-    .checkbox label input {
+    textarea {
         float: right;
         font-size: 1.2em;
         text-align: center;
@@ -290,8 +342,8 @@ div[role="status"]{
         clear: both;
     }
 
-    .checkbox label{
-      width: 100%;
+    .checkbox label {
+        width: 100%;
     }
 
     .submit-row {
@@ -366,9 +418,26 @@ div[role="status"]{
         }
     }
 }
+
+.form-group.has-error {
+    div label input,
+    input {
+        box-shadow: 0 0 0 1px red;
+    }
+
+    span.help-block {
+        color: red;
+    }
+}
 /* TABLE STYLES */
 .uk-table {
     font-size: 1.5em;
+}
+/* DASHBOARD STYLES */
+.dashboard {
+    h2 {
+        font-size: 2rem;
+    }
 }
 @media (min-width:398px) {
     .uk-navbar-brand {
@@ -394,7 +463,6 @@ div[role="status"]{
 
     .page-header {
         h1 {
-            font-size: 5em;
 
             small {
                 font-size: 0.5em;

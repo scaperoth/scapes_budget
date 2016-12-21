@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.scss
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* FONTS */
-@import url( 'https://fonts.googleapis.com/css?family=Raleway|Unna');
+@import url( 'https://fonts.googleapis.com/css?family=Raleway|Unna|Special+Elite');
 $brand-primary: #7DC076;
 $brand-secondary: #B5DCB1;
 $brand-tertiary: #2F7570;
@@ -12,6 +12,8 @@ $header-font: 'Raleway';
 $header-font-fallback: sans-serif;
 $text-font: 'Unna';
 $text-font-fallback: serif;
+$display-font: 'Special Elite';
+$display-font-fallback: sans-serif;
 @import "uikit.min"; // Default Theme
 @import "mixins"; // mixins for theme
 //
@@ -30,6 +32,10 @@ html {
 
 .sans-serif {
     font-family: $header-font, $header-font-fallback;
+}
+
+.display-font{
+    font-family: $display-font, $display-font-fallback!important;
 }
 
 a {
@@ -266,12 +272,11 @@ section {
     }
 }
 /* HEADINGS */
-.big-title {
+.display-header {
     padding-top: 80px;
     padding-left: 6vw;
     padding-right: 6vw;
     letter-spacing: 10px;
-
     > * {
         line-height: 0.9em;
         color: $white;
@@ -497,7 +502,7 @@ div[role="status"] {
         padding-top: 8px;
     }
 
-    .big-title {
+    .display-header {
         letter-spacing: 20px;
 
         h1 {
@@ -536,7 +541,10 @@ div[role="status"] {
         .inner-overlay {}
     }
     /* HEADINGS */
-    .big-title {}
+    .display-header {
+      font-size:12vh;
+      letter-spacing: 3vw;
+    }
 
     .page-header {
         h1 {

@@ -9,6 +9,18 @@ class User < ActiveRecord::Base
     self.fname + ' '+ self.lname
   end
   
+  validates :fname,
+  :presence => true
+  
+  validates :lname,
+  :presence => true
+  
+  validates :username,
+  :presence => true,
+  :uniqueness => {
+    :case_sensitive => false
+  } 
+  
   #->Prelang (user_login/devise)
   has_many :budgets
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -23,7 +35,7 @@ class User < ActiveRecord::Base
     return user if user
 
     # The User was not found and we need to create them
-    User.create(name:     auth.extra.raw_info.name,
+    User.create(fname:     auth.extra.raw_info.name,
                 provider: auth.provider,
                 uid:      auth.uid,
                 email:    auth.info.email,

@@ -1,0 +1,10 @@
+<% model ||= Budget %>
+<% model_name = model.class.to_s.underscore %>
+
+<%= link_to send("#{model_name}_path", model), :class => 'uk-icon-button uk-icon-eye uk-text-default', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+<% end %>
+<%= link_to send("edit_#{model_name}_path", model), :class => 'uk-icon-button uk-icon-pencil uk-text-primary', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+<%- end -%>
+<%= link_to send("#{model_name}_path", model), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'uk-icon-button uk-icon-remove uk-text-danger', :title => "#{
+t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+<%- end -%>

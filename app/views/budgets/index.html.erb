@@ -3,22 +3,29 @@
 <% content_for :head do %>
 <%= t '.title', :default => model_class.to_s.pluralize %>
 <% end %>
+<div class="uk-text-right uk-visible-small" data-uk-scrollspy="{cls:'uk-animation-slide-left uk-animation-2', repeat: true, delay: 600}">
+  Scroll <i class="uk-icon-arrow-right"></i>
+</div>
 <div class="uk-overflow-container">
     <table class="uk-table uk-table-striped">
         <thead>
             <tr>
+                <th class="uk-visible-small"><%=t '.actions', :default => t("helpers.actions") %></th>
                 <th><%= model_class.human_attribute_name(:name) %></th>
                 <th><%= model_class.human_attribute_name(:planned_savings) %></th>
                 <th><%= model_class.human_attribute_name(:start_date) %></th>
                 <th><%= model_class.human_attribute_name(:end_date) %></th>
                 <th><%= model_class.human_attribute_name(:active) %></th>
                 <th><%= model_class.human_attribute_name(:created_at) %></th>
-                <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                <th class="uk-hidden-small"><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
         </thead>
         <tbody>
             <% @budgets.each do |budget| %>
             <tr>
+              <td class="uk-visible-small">
+                  <%= render partial: 'elements/table_actions', locals: {model: budget} %>
+              </td>
                 <td><%= budget.name %></td>
                 <td><%= budget.planned_savings %></td>
                 <td><%= budget.start_date %>
@@ -27,12 +34,8 @@
                 </td>
                 <td><%= budget.active %></td>
                 <td><%=l budget.created_at, format: :long %></td>
-                <td>
-                    <%= link_to budget_path(budget), :class => 'uk-icon-button uk-icon-pencil uk-text-primary', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                    <%- end -%>
-                    <%= link_to budget_path(budget), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'uk-icon-button uk-icon-remove uk-text-danger', :title => "#{ t('.destroy',
-                    :default => t('helpers.links.destroy')) }" do %>
-                    <%- end -%>
+                <td class="uk-hidden-small">
+                    <%= render partial: 'elements/table_actions', locals: {model: budget} %>
                 </td>
             </tr>
             <% end %>

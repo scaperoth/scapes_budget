@@ -2,10 +2,14 @@
 <div class="section-header">
     <h1><%=t '.title', default: Expense %></h1>
 </div>
+<div class="uk-text-right uk-visible-small" data-uk-scrollspy="{cls:'uk-animation-slide-left uk-animation-2', repeat: true, delay: 600}">
+  Scroll <i class="uk-icon-arrow-right"></i>
+</div>
 <div class="uk-overflow-container">
     <table class="uk-table uk-table-striped">
         <thead>
             <tr>
+                <th class="uk-visible-small"><%=t '.actions', :default => t("helpers.actions") %></th>
                 <th><%= model_class.human_attribute_name(:frequency) %></th>
                 <th><%= model_class.human_attribute_name(:name) %></th>
                 <th><%= model_class.human_attribute_name(:amount) %></th>
@@ -13,12 +17,16 @@
                 <th><%= model_class.human_attribute_name(:date) %></th>
                 <th><%= model_class.human_attribute_name(:notes) %></th>
                 <th><%= model_class.human_attribute_name(:created_at) %></th>
-                <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                <th class="uk-hidden-small"><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
         </thead>
         <tbody>
             <% @expenses.each do |expense| %>
             <tr>
+              
+              <td class="uk-visible-small">
+                  <%= render partial: 'elements/table_actions', locals: {model: expense} %>
+              </td>
                 <td><%= expense.frequency.name.capitalize %></td>
                 <td><%= expense.name %></td>
                 <td><%= expense.amount %></td>
@@ -32,21 +40,17 @@
                 </td>
                 <td><%= expense.notes %></td>
                 <td><%=l expense.created_at, format: :long %></td>
-                <td>
-                    <%= link_to expense_path(expense), :class => 'uk-icon-button uk-icon-eye uk-text-default', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                    <% end %>
-                    <%= link_to edit_expense_path(expense), :class => 'uk-icon-button uk-icon-pencil uk-text-primary', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-                    <% end %>
-                    <%= link_to expense_path(expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'uk-icon-button uk-icon-remove uk-text-danger', :title => "#{ t('.destroy',
-                    :default => t('helpers.links.destroy')) }" do %>
-                    <%- end -%>
+                <td class="uk-hidden-small">
+                    <%= render partial: 'elements/table_actions', locals: {model: expense} %>
                 </td>
             </tr>
             <% end %>
         </tbody>
     </table>
 
+    <% if @budget.present? %>
     <%= link_to t('.new', :default => t("helpers.links.new")),
             new_budget_expense_path(@budget),
             :class => 'uk-button uk-button-primary' %>
+    <% end %>
 </div>

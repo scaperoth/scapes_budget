@@ -4,7 +4,7 @@ class BudgetsController < ApplicationController
     # GET /budgets
     # GET /budgets.json
     def index
-        @budgets = Budget.all.where(user: current_user)
+        @budgets = current_user.budgets.order(:created_at)
     end
 
     # GET /budgets/1
@@ -69,8 +69,8 @@ class BudgetsController < ApplicationController
     end
     
     def set_income_and_expense
-        @incomes = Income.all.where(budget_id: @budget.id)
-        @expenses = Expense.all.where(budget_id: @budget.id)
+        @incomes = Income.all.where(budget_id: @budget.id).where(user: current_user)
+        @expenses = Expense.all.where(budget_id: @budget.id).where(user: current_user)
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

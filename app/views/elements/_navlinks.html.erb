@@ -6,7 +6,7 @@
 
 <% if mobile_nav %>
 <li class="uk-parent ">
-    <%= link_to 'Budgets', '#' %>
+    <%= link_to 'BUDGETS', '#' %>
 
     <ul class="uk-nav-sub">
     <li class="uk-nav-header">My Budgets</li>
@@ -17,24 +17,24 @@
     <% end %>
     <li class="uk-nav-divider"></li>
     <li class="<%= active_class budgets_path %>">
-        <%= link_to "All Budgets", budgets_path %>
+        <%= link_to "ALL BUDGETS", budgets_path %>
     </li>
     <li class="<%= active_class new_budget_path %>">
-        <%= link_to "New Budget", new_budget_path %>
+        <%= link_to "NEW BUDGET", new_budget_path %>
     </li>
 </ul>
 
 </li>
 <% else %>
 <li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>" data-uk-dropdown="{mode:'hover'}" aria-haspopup="true" aria-expanded="false">
-<%= link_to 'Budgets', '' %>
+<%= link_to 'BUDGETS', '' %>
 
 <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
     <ul class="uk-nav uk-nav-navbar">
 
         <li class="uk-nav-header">My Budgets</li>
         <li class="<%= active_class budgets_path %>">
-            <%= link_to "All Budgets", budgets_path %>
+            <%= link_to "ALL BUDGETS", budgets_path %>
         </li>
         <% budgets.each do |budget| %>
         <li class="<%= active_class edit_budget_path(budget) %>">
@@ -44,7 +44,7 @@
 
         <li class="uk-nav-divider"></li>
         <li class="<%= active_class new_budget_path %>">
-            <%= link_to "New Budget", new_budget_path %>
+            <%= link_to "NEW BUDGET", new_budget_path %>
         </li>
     </ul>
 </div>
@@ -52,39 +52,33 @@
 </li>
 <% end %>
 <li class="<%= active_class(dashboard_path) %>">
-<%= link_to dashboard_path do %>
-
-<% if !mobile_nav %>
-<i title="Dashboard" class="fa fa-dashboard fa-fw"></i>
-Dashboard
-<% else %>Dashboard<% end %>
-<% end %>
+<%= link_to dashboard_path do %>DASHBOARD<% end %>
 </li>
 <li class="<%= active_class(edit_user_registration_path) %>">
 <%= link_to edit_user_registration_path do %>
 
 <% if !mobile_nav %>
-<i title="Account" class="fa fa-user fa-fw"></i>
-<% else %>Account<% end %>
+<i title="ACCOUNT" class="fa fa-user fa-fw"></i>
+<% else %>ACCOUNT<% end %>
 <% end %>
 </li>
 <li class="<%= active_class(destroy_user_session_path) %>">
 <%= link_to destroy_user_session_path, method: :delete do %>
 
 <% if !mobile_nav %>
-<i title="Sign Out" class="fa fa-lock fa-fw"></i>
-<% else %>Sign Out<% end %>
+<i title="SIGN OUT" class="fa fa-lock fa-fw"></i>
+<% else %>SIGN OUT<% end %>
 <% end %>
 </li>
 <% else %>
 <li class="<%= active_class(new_user_session_path) %>">
 <%= link_to new_user_session_path do %>
-Sign In
+SIGN IN
 <% end %>
 </li>
 <li class="<%= active_class(new_user_registration_path) %>">
 <%= link_to new_user_registration_path do %>
-Sign Up
+SIGN UP
 <% end %>
 </li>
 <% end %>

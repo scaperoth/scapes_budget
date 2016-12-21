@@ -77,8 +77,8 @@ class IncomesController < ApplicationController
 
     # set budget for specific expense
     def set_budget
-        @budget = Budget.where(user: current_user).find(params[:budget_id]) unless params[:budget_id].nil?
-        @budget = Budget.where(user: current_user).find(@income.budget_id) unless @income.nil?
+        @budget = current_user.budgets.find(params[:budget_id]) unless params[:budget_id].nil?
+        @budget = current_user.budgets.find(@income.budget_id) unless @income.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

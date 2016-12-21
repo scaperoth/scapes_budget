@@ -46,7 +46,8 @@ h3,
 h4 {
     font-family: $header-font, $header-font-fallback;
 
-    a, span {
+    a,
+    span {
         font-family: $header-font, $header-font-fallback;
     }
 }
@@ -54,7 +55,7 @@ h4 {
 /* MISC */
 .sb-primary-color {
     background-color: $brand-primary;
-    
+
     &-light {
         background-color: lighten($brand-primary, 13%);
     }
@@ -62,17 +63,17 @@ h4 {
     &-dark {
         background-color: darken($brand-primary, 13%);
     }
-    
-    &-text{
-      color: $brand-primary;
-      
-      &-light {
-          color: lighten($brand-primary, 13%);
-      }
 
-      &-dark {
-          color: darken($brand-primary, 13%);
-      }
+    &-text {
+        color: $brand-primary;
+
+        &-light {
+            color: lighten($brand-primary, 13%);
+        }
+
+        &-dark {
+            color: darken($brand-primary, 13%);
+        }
     }
 }
 
@@ -99,11 +100,19 @@ h4 {
 .line-break {
     margin: 30px 0;
 }
-/* LAYOUTS */
-.main-content{
-  min-height:100vh;
-  padding:15px 15px 50vh 15px;
+
+/* ANIMATIONS */
+.animation-infinite{
+    animation-iteration-count: infinite!important;
 }
+
+
+/* LAYOUTS */
+.main-content {
+    min-height: 100vh;
+    padding: 15px 15px 50vh;
+}
+
 section {
     &.content-section,
     &.page-section {
@@ -120,13 +129,15 @@ section {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    
-    &.page-devise{
+
+    &.page-devise {
         min-height: 632px + 80px;
+
         .inner-overlay {
-          min-height:632px + 80px;
+            min-height: 632px + 80px;
         }
     }
+
     .inner-overlay {
         height: 100vh;
         padding: 80px 4% 0;
@@ -172,7 +183,6 @@ section {
 }
 
 .uk-navbar-toggle {
-    padding-top: 9px;
     color: $brand-primary;
 
     &:hover {
@@ -209,11 +219,33 @@ section {
         color: $brand-primary;
     }
 }
-.uk-offcanvas .uk-panel{
-  margin:0;
-}
-.uk-offcanvas-bar {
-    background-color: #333;
+
+.uk-offcanvas {
+    .uk-panel {
+        margin: 0;
+        background-color: rgba(20,20,20,0.9);
+
+        .uk-nav-offcanvas {
+            li {
+                a {
+                    font-size: 1.5em;
+                  }
+            }
+
+            .uk-nav-sub {
+                padding-left: 30px;
+
+                li {
+                    padding-bottom: 10px;
+                }
+
+                .uk-nav-header {
+                    font-size: 1.5em;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
 }
 /* ALERTS */
 .alert-container {
@@ -272,12 +304,17 @@ section {
 }
 
 .small-banner {
+    position:relative;
+    height:285px;
     margin-top: -80px;
     padding-top: 145px;
     margin-bottom: 40px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    .inner-overlay{
+      position:absolute; top:0;height:100%; width:100%;
+    }
 }
 
 .dashboard-header {
@@ -336,11 +373,14 @@ div[role="status"] {
         float: right;
         font-size: 1.6em;
         text-align: center;
-        height:60px!important;
+        height: 30px!important;
+        margin-bottom: 10px;
     }
-    input[type="submit"]{
-      float:right;
+
+    input[type="submit"] {
+        float: right;
     }
+
     a,
     button {
         font-size: 1.2em;
@@ -460,7 +500,6 @@ div[role="status"] {
     .big-title {
         letter-spacing: 20px;
 
-
         h1 {
             font-size: 8em;
             font-size: 10vh;
@@ -469,7 +508,6 @@ div[role="status"] {
 
     .page-header {
         h1 {
-
             small {
                 font-size: 0.5em;
                 letter-spacing: 5px;
@@ -479,20 +517,18 @@ div[role="status"] {
         }
     }
 }
-
-@media(min-width: 768px){
-  .page-form-centered {
-  
-      .checkbox label input,
-      input:not([type="submit"]),
-      select,
-      textarea {
-          font-size: 1.2em;
-          height:auto!important;
-      }
+@media(min-width: 768px) {
+    .page-form-centered {
+        .checkbox label input,
+        input:not([type="submit"]),
+        select,
+        textarea {
+            font-size: 1.2em;
+            height: auto!important;
+            margin-bottom: auto;
+        }
     }
 }
-
 /* Large Screens */
 @media (min-width:1000px) {
     /* BACKGROUND */

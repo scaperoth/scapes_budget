@@ -8,7 +8,17 @@ $shades: 10;
   }
 }
 
+@mixin uk-animation-timer {
+  @for $i from 1 through 30 {
+  .uk-animation-#{$i} { 
+    -webkit-animation-duration: #{$i}s;
+      animation-duration: #{$i}s;
+   }
+  }
+}
+
 @include transparent-background-list;
+@include uk-animation-timer;
 
 @function get-vw($target) { 
   $vw-context: (1000*.01) * 1px;

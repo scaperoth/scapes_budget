@@ -42,8 +42,8 @@
                 <% if controller.controller_name == 'pages' %>
                 <%= yield %>
             <% else %>
-                <div class="small-banner uk-cover-background uk-width-viewport" style="position:relative;height:385px; background-image: url(<%=asset_path background_image %>);">
-                    <div class="transparent-black-5 uk-width-viewport uk-width-viewport inner-overlay" style="position:absolute; top:0;height:100%; width:100%;">
+                <div class="small-banner uk-cover-background uk-width-viewport" style=" background-image: url(<%=asset_path background_image %>);">
+                    <div class="transparent-black-8 uk-width-viewport uk-width-viewport inner-overlay">
                         <div class="uk-width-8-10 uk-container-center ">
                             <div class="page-header">
                                 <h1><%= yield :head %></h1>

@@ -1,44 +1,46 @@
 <% mobile_nav ||= false %>
+<% budgets ||= current_user.budgets.order(:created_at) %>
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
 
-<% if mobile_nav %> 
+<% if mobile_nav %>
 <li class="uk-parent ">
     <%= link_to 'Budgets', '#' %>
 
     <ul class="uk-nav-sub">
-    <li class="<%= active_class new_budget_path %>">
-        <%= link_to "New Budget", new_budget_path %>
-    </li>
-    <li class="uk-nav-divider"></li>
-    <li class="<%= active_class budgets_path %>">
-        <%= link_to "All Budgets", budgets_path %>
-    </li>
-    <% Budget.all.each do |budget| %>
+    <li class="uk-nav-header">My Budgets</li>
+    <% budgets.each do |budget| %>
     <li class="<%= active_class edit_budget_path(budget) %>">
         <%= link_to budget.name, edit_budget_path(budget) %>
     </li>
     <% end %>
+    <li class="uk-nav-divider"></li>
+    <li class="<%= active_class budgets_path %>">
+        <%= link_to "All Budgets", budgets_path %>
+    </li>
+    <li class="<%= active_class new_budget_path %>">
+        <%= link_to "New Budget", new_budget_path %>
+    </li>
 </ul>
 
 </li>
 <% else %>
 <li class="uk-parent <%= active_class if controller.controller_name.eql? 'budgets' %>" data-uk-dropdown="{mode:'hover'}" aria-haspopup="true" aria-expanded="false">
-    <%= link_to 'Budgets', '' %>
+<%= link_to 'Budgets', '' %>
 
-    <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
-        <ul class="uk-nav uk-nav-navbar">
-          
+<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
+    <ul class="uk-nav uk-nav-navbar">
+
         <li class="uk-nav-header">My Budgets</li>
         <li class="<%= active_class budgets_path %>">
             <%= link_to "All Budgets", budgets_path %>
         </li>
-        <% Budget.all.where(user: current_user).each do |budget| %>
+        <% budgets.each do |budget| %>
         <li class="<%= active_class edit_budget_path(budget) %>">
             <%= link_to budget.name, edit_budget_path(budget) %>
         </li>
         <% end %>
-        
+
         <li class="uk-nav-divider"></li>
         <li class="<%= active_class new_budget_path %>">
             <%= link_to "New Budget", new_budget_path %>
@@ -52,7 +54,8 @@
 <%= link_to dashboard_path do %>
 
 <% if !mobile_nav %>
-<i title="Dashboard" class="fa fa-dashboard fa-fw"></i> Dashboard
+<i title="Dashboard" class="fa fa-dashboard fa-fw"></i>
+Dashboard
 <% else %>Dashboard<% end %>
 <% end %>
 </li>

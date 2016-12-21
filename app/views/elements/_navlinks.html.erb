@@ -1,7 +1,8 @@
 <% mobile_nav ||= false %>
-<% budgets ||= current_user.budgets.order(:created_at) %>
 <% if defined?(Devise) %>
 <% if user_signed_in? %>
+
+<% budgets ||= current_user.budgets.order(:created_at) %>
 
 <% if mobile_nav %>
 <li class="uk-parent ">

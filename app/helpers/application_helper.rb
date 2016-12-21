@@ -11,11 +11,19 @@ module ApplicationHelper
     def uikit_messages
         output = ''
         flash.each do |name, msg|
-            display_class = 'notice'
-            display_class = 'danger' if name == 'alert' || name == 'error'
-            message = content_tag :div, msg, id: "flash_#{name}"
-            close_link = link_to '', '', class: 'uk-alert-close uk-close'
-            output += content_tag :div, close_link + message, class: 'uk-alert uk-alert-' + display_class
+            case name
+            when 'error'
+              display_class = 'danger'
+              display_icon = "<i class=\"uk-icon-exclamation-circle\"></i>"
+            when 'alert'
+              display_class = 'warning'
+              display_icon = "<i class=\"uk-icon-exclamation-circle\"></i>"
+            else
+              display_class = 'success' 
+              display_icon = "<i class=\"uk-icon-check\"></i>"
+            end 
+            
+            output += javascript_tag "$(document).on('ready page:load turbolinks:load', function() {UIkit.notify('#{display_icon} #{msg}', {status: '#{display_class}'})});"
         end
 
         output.html_safe

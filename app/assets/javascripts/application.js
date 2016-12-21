@@ -19,4 +19,5 @@
 //= require autocomplete-rails
 //= require uikit.min
 //= require components/sticky
+//= require components/notify
 //= require_tree .

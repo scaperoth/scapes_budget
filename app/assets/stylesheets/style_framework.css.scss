@@ -34,7 +34,7 @@ html {
     font-family: $header-font, $header-font-fallback;
 }
 
-.display-font{
+.display-font {
     font-family: $display-font, $display-font-fallback!important;
 }
 
@@ -106,13 +106,10 @@ h4 {
 .line-break {
     margin: 30px 0;
 }
-
 /* ANIMATIONS */
-.animation-infinite{
+.animation-infinite {
     animation-iteration-count: infinite!important;
 }
-
-
 /* LAYOUTS */
 .main-content {
     min-height: 100vh;
@@ -152,11 +149,11 @@ section {
 //
 /* NAVBAR STYLES */
 .uk-navbar {
-    background: rgba(20,20,20,0.5);
+    background: rgba(20,20,20,0.7);
     position: relative;
     z-index: 999;
     min-height: 40px;
-    padding: 20px 0;
+    padding: 0;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
@@ -171,83 +168,103 @@ section {
             font-size: 1.1em!important;
         }
 
-        .uk-navbar-nav > li > a {
-            font-size: 1.1em!important;
+        .uk-navbar-nav {
+          > li {
+            padding:0;
+            > a {
+                font-size: 1.1em!important;
+            }
+          }
         }
     }
-}
 
-.uk-navbar-nav > li > a {
-    color: $brand-primary;
-    background: transparent;
-    font-family: $header-font, $header-font-fallback;
-    font-size: 1.5em;
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
-}
-
-.uk-navbar-toggle {
-    color: $brand-primary;
-
-    &:hover {
-        color: $brand-primary;
-    }
-}
-
-.uk-navbar-nav > li.uk-active > a {
-    background-color: transparent;
-    color: $white;
-    text-decoration: overline;
-}
-
-.uk-navbar-nav > li > a:focus,
-.uk-navbar-nav > li.uk-open > a,
-.uk-navbar-nav > li:hover > a {
-    color: $white;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.uk-navbar-nav > li.uk-active:hover > a {
-    text-decoration: overline underline;
-}
-
-.uk-navbar-brand {
-    color: $brand-primary;
-    font-family: $header-font, $header-font-fallback;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    font-size: 1.2em;
-
-    &:hover {
-        color: $brand-primary;
-    }
-}
-
-.uk-offcanvas {
-    .uk-panel {
-        margin: 0;
-        background-color: rgba(20,20,20,0.9);
-
-        .uk-nav-offcanvas {
-            li {
+    .uk-navbar-nav {
+        & > li {
+            padding: 20px 0;
+            
+            -webkit-transition: all 300ms ease-in-out;
+            -moz-transition: all 300ms ease-in-out;
+            -o-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+            &.uk-active {
                 a {
-                    font-size: 1.5em;
-                  }
+                    color: $white;
+                }
+                background-color: rgba($brand-primary, 0.7);
             }
 
-            .uk-nav-sub {
-                padding-left: 30px;
+            & > a {
+                color: $brand-primary;
+                background: transparent;
+                font-family: $header-font, $header-font-fallback;
+                font-size: 1.5em;
+                -webkit-transition: all 300ms ease-in-out;
+                -moz-transition: all 300ms ease-in-out;
+                -o-transition: all 300ms ease-in-out;
+                transition: all 300ms ease-in-out;
+            }
+        }
 
+         > li:hover,
+        > li.uk-open {
+            background-color: rgba($brand-secondary, 0.7);
+
+            > a {
+                color: $white;
+            }
+        }
+
+        a:focus {
+            color: $white;
+        }
+
+        > li.uk-active:hover {}
+    }
+
+    .uk-navbar-toggle {
+        color: $brand-primary;
+
+        &:hover {
+            color: $brand-primary;
+        }
+    }
+
+    .uk-navbar-brand {
+        color: $brand-primary;
+        font-family: $header-font, $header-font-fallback;
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        font-size: 1.2em;
+        padding-top: 5px;
+
+        &:hover {
+            color: $brand-primary;
+        }
+    }
+
+    .uk-offcanvas {
+        .uk-panel {
+            margin: 0;
+            background-color: rgba(20,20,20,0.9);
+
+            .uk-nav-offcanvas {
                 li {
-                    padding-bottom: 10px;
+                    a {
+                        font-size: 1.5em;
+                    }
                 }
 
-                .uk-nav-header {
-                    font-size: 1.5em;
-                    padding-left: 0;
+                .uk-nav-sub {
+                    padding-left: 30px;
+
+                    li {
+                        padding-bottom: 10px;
+                    }
+
+                    .uk-nav-header {
+                        font-size: 1.5em;
+                        padding-left: 0;
+                    }
                 }
             }
         }
@@ -277,6 +294,7 @@ section {
     padding-left: 6vw;
     padding-right: 6vw;
     letter-spacing: 10px;
+
     > * {
         line-height: 0.9em;
         color: $white;
@@ -309,16 +327,20 @@ section {
 }
 
 .small-banner {
-    position:relative;
-    height:285px;
+    position: relative;
+    height: 285px;
     margin-top: -80px;
     padding-top: 145px;
     margin-bottom: 40px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    .inner-overlay{
-      position:absolute; top:0;height:100%; width:100%;
+
+    .inner-overlay {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
     }
 }
 
@@ -533,6 +555,12 @@ div[role="status"] {
             margin-bottom: auto;
         }
     }
+
+    .uk-navbar {
+        .uk-navbar-brand {
+            padding-top: 29px;
+        }
+    }
 }
 /* Large Screens */
 @media (min-width:1000px) {
@@ -542,8 +570,8 @@ div[role="status"] {
     }
     /* HEADINGS */
     .display-header {
-      font-size:12vh;
-      letter-spacing: 3vw;
+        font-size: 12vh;
+        letter-spacing: 3vw;
     }
 
     .page-header {

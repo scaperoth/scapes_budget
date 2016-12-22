@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super
   end
-
+  
   def new
     super
   end
@@ -12,4 +12,8 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
   end
+  
+  def after_sign_in_path_for(resource)
+    dashboard_path
+  end 
 end

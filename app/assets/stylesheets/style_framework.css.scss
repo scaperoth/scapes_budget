@@ -438,7 +438,9 @@ div[role="status"] {
 .form-user {
     padding-top: 15vh;
     color: $white;
-
+    &.registrations{
+      padding-top:5vh;
+    }
     .form-links,
     .large-font {
         > * {

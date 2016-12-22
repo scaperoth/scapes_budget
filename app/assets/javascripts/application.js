@@ -12,11 +12,11 @@
 //
 //= require jquery  
 //= require jquery_ujs
+//= require turbolinks
+//= require uikit.min
+//= require uikit-components
 //= require Chart.bundle
 //= require chartkick
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
-//= require uikit
-//= require uikit-components
-//= require turbolinks
 //= require_tree .

@@ -17,7 +17,6 @@
 //= require chartkick
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
-//= require uikit.min
-//= require components/sticky
-//= require components/notify
+//= require uikit
+//= require uikit-components
 //= require_tree .

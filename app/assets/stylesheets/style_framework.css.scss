@@ -14,7 +14,8 @@ $text-font: 'Unna';
 $text-font-fallback: serif;
 $display-font: 'Special Elite';
 $display-font-fallback: sans-serif;
-@import "uikit.min"; // Default Theme
+@import "uikit"; // Default Theme
+@import "uikit-components";
 @import "mixins"; // mixins for theme
 //
 /* HTML STYLES */

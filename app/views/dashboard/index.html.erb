@@ -36,7 +36,7 @@ Dashboard
           <%= no_incomes_or_expenses_message budget %>
         <% else %>
         <section class="page-section" style="min-height:100px;">
-            <div class="uk-grid  uk-grid-divider uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
+            <div class="uk-grid uk-width-1-1 uk-grid-divider uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
                 <div class="uk-width-9-10 uk-width-small-1-2 uk-width-medium-1-3 budget breakdown-section uk-text-center uk-container-center">
                     <div class="uk-panel  uk-panel-box">
                         <h2 class="uk-width-1-1 uk-panel-title">
@@ -115,7 +115,7 @@ Dashboard
 </section>
 <hr class="uk-grid-divider"/>
 <section class="page-section">
-    <div class="uk-grid uk-grid-divider">
+    <div class="uk-grid uk-width-1-1 uk-grid-divider">
         <div class="uk-width-1-1 uk-width-medium-1-2 uk-text-center uk-container-center">
             <h3>Income Categories</h3>
             <%= pie_chart budget.incomes.group(:category).count, legend: false %>

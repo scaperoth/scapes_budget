@@ -1,4 +1,4 @@
-$(document).on('ready page:load turbolinks:load', function() {
+
     (function(addon) {
 
         var component;
@@ -369,4 +369,3 @@ $(document).on('ready page:load turbolinks:load', function() {
 
         return UI.sticky;
     });
-});

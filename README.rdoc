@@ -1,17 +1,17 @@
-# scaperoth/scapes_budget
+= scaperoth/scapes_budget
 
-## Description
+== Description
 
 A budget application that can be used to eaily manage finanaces
 
-## Requirements
+== Requirements
 
 This template currently works with:
 
 * Rails 4.2.x
 * PostgreSQL
 
-## What does it do?
+== What does it do?
 
 This application has the following minimal functional requirements:
 
@@ -21,9 +21,9 @@ This application has the following minimal functional requirements:
 4. Allow multiple users and user sign-up
 5. Allow users to manage their account once signed up 
 
-## What is included?
+== What is included?
 
-#### These gems are used in this application
+==== These gems are used in this application
 
 * activeadmin
 * argyle

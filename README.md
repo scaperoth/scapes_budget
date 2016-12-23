@@ -4,9 +4,9 @@
 
 A budget application that can be used to eaily plan a budget. The budget application will help show daily allowances, spending categories, and earning potential based on data provided by the user. 
 
-![home](assets/screenshots/home.png "Home page.")
-![dashboard](assets/screenshots/dashboard.png "Dashboard.")
-![budget](assets/screenshots/edit_budget.png "Editing the home page.")
+![home](app/assets/screenshots/home.png "Home page.")
+![dashboard](app/assets/screenshots/dashboard.png "Dashboard.")
+![budget](app/assets/screenshots/edit_budget.png "Editing the home page.")
 
 ## Requirements
 

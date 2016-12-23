@@ -1,28 +1,66 @@
-== README
+# scaperoth/scapes_budget
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+A budget application that can be used to eaily manage finanaces
 
-* Ruby version
+## Requirements
 
-* System dependencies
+This template currently works with:
 
-* Configuration
+* Rails 4.2.x
+* PostgreSQL
 
-* Database creation
+## What does it do?
 
-* Database initialization
+This application has the following minimal functional requirements:
 
-* How to run the test suite
+1. Store named budgets that have a date range
+2. Store income and expenses related to a specific budget
+3. Display a dashboard with information relating to your budget
+4. Allow multiple users and user sign-up
+5. Allow users to manage their account once signed up 
 
-* Services (job queues, cache servers, search engines, etc.)
+## What is included?
 
-* Deployment instructions
+#### These gems are used in this application
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* activeadmin
+* argyle
+* better_errors
+* binding_of_caller
+* bundler
+* chartkick
+* coffee-rails
+* cucumber-rails
+* database_cleaner
+* delayed_job_active_record
+* devise
+* dotenv-rails
+* factory_girl_rails
+* flot-rails
+* font-awesome-rails
+* google-analytics-rails
+* jbuilder
+* jquery-rails
+* jquery-ui-rails
+* morrisjs-rails
+* omniauth
+* omniauth-facebook
+* pry-rails
+* puma
+* rails_12factor
+* rails_config
+* rails4-autocomplete
+* raphael-rails
+* rspec-rails
+* sass-rails
+* sdoc
+* shoulda-matchers
+* simple_form
+* spring
+* turbolinks
+* tzinfo-data
+* uglifier
+* uikit-rails
+* validates_formatting_of
